@@ -1,8 +1,8 @@
-package com.uniandes.vynils
+package com.uniandes.vinyls.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.uniandes.vynils.databinding.ActivityMainBinding
+import com.uniandes.vinyls.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

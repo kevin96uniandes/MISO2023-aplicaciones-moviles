@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Vynils mobile</string>
+    <string name="app_name">Vinyls</string>
+    <string name="dd_mm_aaaa">DD-MM-AAAA</string>
+    <string name="musical_genre">Género</string>
+    <string name="release_date">Fecha de lanzamiento:</string>
+    <string name="write_your_name">Escribe tu nombre</string>
+    <string name="name">Nombre:</string>
+    <string name="cover_image">Seleccionar cover</string>
+    <string name="album_review">Reseña del álbum</string>
+    <string name="character_count">Caracteres restantes: %1$d/%2$d</string>
 </resources>

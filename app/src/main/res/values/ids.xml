@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="create_menu_btn_save" type="id" />
+    <item name="create_menu_cover_image" type="id"/>
+    <item name="create_menu_cover_text" type="id"/>
+    <item name="create_menu_musical_genre" type="id"/>
+    <item name="create_menu_name" type="id"/>
+    <item name="create_menu_release_date" type="id"/>
+    <item name="create_menu_review" type="id" />
+    <item name="create_menu_review_char_counter" type="id" />
+</resources>
