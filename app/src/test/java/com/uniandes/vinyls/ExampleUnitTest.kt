@@ -1,4 +1,4 @@
-package com.uniandes.vynils
+package com.uniandes.vinyls
 
 import org.junit.Test
 

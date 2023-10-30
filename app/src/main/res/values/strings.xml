@@ -5,7 +5,17 @@
     <string name="release_date">Fecha de lanzamiento:</string>
     <string name="write_your_name">Escribe tu nombre</string>
     <string name="name">Nombre:</string>
-    <string name="cover_image">Seleccionar cover</string>
+    <string name="cover_image">Url del cover</string>
     <string name="album_review">Reseña del álbum</string>
     <string name="character_count">Caracteres restantes: %1$d/%2$d</string>
+    <string name="titele_create_album">Nuevo Álbum</string>
+    <string name="loading">Loading</string>
+    <string name="network_error">There was an error loading the data</string>
+    <string name="create_album_record_label">Estudio de grabación</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_albums">Álbumes</string>
+    <string name="menu_artists">Artistas</string>
+    <string name="collectors">Coleccionistas</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>

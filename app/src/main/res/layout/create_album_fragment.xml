@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.fragments.CreateAlbumFragment"
     android:background="@color/vinyls_black"
     >
 
@@ -24,7 +27,7 @@
                 android:text="@string/name" />
 
             <com.uniandes.vinyls.ui.components.CustomEditText
-                android:id="@+id/create_menu_release_name"
+                android:id="@+id/create_album_name"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:maxLength="100"
@@ -43,13 +46,13 @@
                 android:text="@string/release_date" />
 
             <com.uniandes.vinyls.ui.components.CustomEditText
-                android:id="@+id/create_menu_release_date"
+                android:id="@+id/create_album_release_date"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:hint="@string/dd_mm_aaaa"
                 android:focusable="false"
                 android:clickable="true"
-               />
+                />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -64,7 +67,7 @@
                 android:text="@string/musical_genre" />
 
             <Spinner
-                android:id="@+id/create_menu_musical_genre"
+                android:id="@+id/create_album_musical_genre"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/rounded_background"
@@ -81,15 +84,37 @@
             android:layout_marginTop="16dp">
 
             <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_album_record_label" />
+
+            <Spinner
+                android:id="@+id/create_album_record_label"
                 android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_background"
+                android:textSize="16sp"
+                android:textColor="@color/vinyls_yellow"
+                android:paddingStart="5sp"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cover_image" />
 
-            <ImageButton
-                android:id="@+id/create_menu_cover_image"
+            <com.uniandes.vinyls.ui.components.CustomEditText
+                android:id="@+id/create_album_cover_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_menu_gallery" />
+                android:layout_height="45dp"
+                android:maxLength="100"
+                android:hint="@string/cover_image" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -104,14 +129,14 @@
                 android:text="@string/album_review" />
 
             <com.uniandes.vinyls.ui.components.CustomEditText
-                android:id="@+id/create_menu_review"
+                android:id="@+id/create_album_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:lines="5" />
 
             <TextView
-                android:id="@+id/create_menu_review_char_counter"
+                android:id="@+id/create_album_review_char_counter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="textEnd"
@@ -128,7 +153,7 @@
             android:layout_marginTop="16dp">
 
             <com.uniandes.vinyls.ui.components.CustomButton
-                android:id="@+id/create_menu_btn_save"
+                android:id="@+id/create_album_btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </androidx.appcompat.widget.LinearLayoutCompat>

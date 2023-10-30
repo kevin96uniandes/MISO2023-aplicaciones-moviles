@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uniandes.vinyls.databinding.ActivitySplashBinding
+import com.uniandes.vinyls.ui.fragments.CreateAlbumFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
 
             // Coloca el código que deseas ejecutar después del retraso aquí
             // Por ejemplo, puedes iniciar una nueva actividad o realizar otras acciones.
-            val intent = Intent(this@SplashActivity, CreateMenuActivity::class.java)
+            val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
