@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="create_album_btn_save" type="id" />
+    <item name="create_album_cover_image" type="id"/>
+    <item name="create_album_cover_text" type="id"/>
+    <item name="create_album_musical_genre" type="id"/>
+    <item name="create_album_name" type="id"/>
+    <item name="create_album_release_date" type="id"/>
+    <item name="create_album_review" type="id" />
+    <item name="create_album_review_char_counter" type="id" />
+    <item name="btn_sign_in_as_collectors" type="id" />
+</resources>
