@@ -1,7 +1,6 @@
 package com.uniandes.vinyls.viewmodels
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.uniandes.vinyls.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers

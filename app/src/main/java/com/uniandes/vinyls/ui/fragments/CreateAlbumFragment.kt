@@ -58,7 +58,7 @@ class CreateAlbumFragment : Fragment() {
     }
 
     /*
-        Se utiliza para inicializar compoentes de la vista, este se ejecuto después de onCreateView
+        Se utiliza para inicializar componentes de la vista, este se ejecuto después de onCreateView
     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -92,8 +92,8 @@ class CreateAlbumFragment : Fragment() {
             albumParams["cover"] = etCoverUrl.text.toString()
             albumParams["releaseDate"] = etReleaseDate.text.toString()
             albumParams["description"] = etReview.text.toString()
-            albumParams["genre"] = selectedGenre
-            albumParams["recordLabel"] = selectedRecordLabel
+            albumParams["genre"] = "Salsa"
+            albumParams["recordLabel"] = "EMI"
             viewModel.createAlbum(albumParams)
         }
     }

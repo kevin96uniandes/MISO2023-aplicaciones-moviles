@@ -1,6 +1,7 @@
 package com.uniandes.vinyls.network
 
 import android.content.Context
+import android.util.Log
 import com.uniandes.vinyls.models.Album
 import org.json.JSONArray
 import org.json.JSONObject
@@ -35,6 +36,7 @@ class AlbumServiceAdapter(context: Context): NetworkServiceAdapter(context) {
                 continuation.resume(createdAlbum)
             },{
                 continuation.resumeWithException(it)
+                Log.e("error => ", it.toString())
             })
         )
     }

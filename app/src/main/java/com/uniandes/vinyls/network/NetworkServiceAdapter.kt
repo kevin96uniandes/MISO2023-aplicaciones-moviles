@@ -5,13 +5,12 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 
 abstract class NetworkServiceAdapter constructor(context: Context){
-    private val BASE_URL= "https://google.com.co"
+    private val BASE_URL= "https://web-kevin96uniandes.cloud.okteto.net"
 
     protected val requestQueue: RequestQueue by lazy {
         Volley.newRequestQueue(context.applicationContext)
