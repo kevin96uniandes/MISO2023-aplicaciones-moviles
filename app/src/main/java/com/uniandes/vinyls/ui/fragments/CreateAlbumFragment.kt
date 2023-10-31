@@ -76,7 +76,7 @@ class CreateAlbumFragment : Fragment() {
         fillSpinner( spRecordLabel, items)
         spinnerEvents(spRecordLabel, items)
         addOpenDatePicker(etReleaseDate)
-        createAlbum()
+        btnCreateAlbumEvents()
         val activity = requireNotNull(this.activity)
         viewModel = ViewModelProvider(
             this,
@@ -85,7 +85,7 @@ class CreateAlbumFragment : Fragment() {
     }
 
 
-    private fun createAlbum(){
+    private fun btnCreateAlbumEvents(){
         btnCreateAlbum.setOnClickListener{
             val albumParams: ArrayMap<String, String> = ArrayMap()
             albumParams["name"] = etName.text.toString()
