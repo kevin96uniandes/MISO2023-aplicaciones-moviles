@@ -18,4 +18,5 @@
     <string name="collectors">Coleccionistas</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="list_albums_label">Listado de álbumes</string>
 </resources>

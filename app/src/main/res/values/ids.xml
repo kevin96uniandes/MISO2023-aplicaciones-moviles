@@ -9,4 +9,5 @@
     <item name="create_album_review" type="id" />
     <item name="create_album_review_char_counter" type="id" />
     <item name="btn_sign_in_as_collectors" type="id" />
+    <item name="search_albums" type="id" />
 </resources>
