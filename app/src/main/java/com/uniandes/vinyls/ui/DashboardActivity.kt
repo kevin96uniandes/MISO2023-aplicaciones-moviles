@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.ui.fragments.CreateAlbumFragment
+import com.uniandes.vinyls.ui.fragments.ListAlbumsFragment
 
 class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer: DrawerLayout
@@ -64,7 +65,7 @@ class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItem
         item.isChecked = true
         when(item.itemId) {
             R.id.nav_item_one -> goToHome()
-            R.id.nav_item_two -> changeFragment(CreateAlbumFragment.newInstance(), item.title.toString())
+            R.id.nav_item_two -> changeFragment(ListAlbumsFragment.newInstance(), item.title.toString())
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
