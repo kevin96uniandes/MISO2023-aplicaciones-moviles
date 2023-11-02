@@ -19,4 +19,6 @@
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="list_albums_label">Listado de álbumes</string>
+    <string name="order_name_label">Nombre</string>
+    <string name="title_activity_list_albums">ListAlbumsActivity</string>
 </resources>

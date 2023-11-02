@@ -17,34 +17,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <com.uniandes.vinyls.ui.components.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/list_albums_label"
                 android:textSize="33sp"
                 android:layout_marginBottom="20dp"/>
-
             <View
                 android:layout_height="1dp"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:alpha="0.5"
                 android:layout_marginBottom="20dp"/>
-
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_albums"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/search_bar_background"
-                android:hint="Buscar álbumes..." />
+                android:hint="Buscar álbumes..."
+                android:layout_marginBottom="20dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_genre_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/musical_genre"
+                android:background="@color/black"
+                android:textColor="@color/white" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_name_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_name_label"
+                android:background="@drawable/rounded_button" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_artist_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_artists"
+                android:background="@color/black"
+                android:textColor="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
