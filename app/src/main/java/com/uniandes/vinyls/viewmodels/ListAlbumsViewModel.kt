@@ -25,6 +25,7 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
     private val albumsRepository = AlbumRepository(application)
     private val estadoServicios = EstadoServicios()
     private val _albums = MutableLiveData<List<Album>>()
+    private var initialAlbums: List<Album> = emptyList()
     val albums: LiveData<List<Album>> = _albums
     val aplicacion = application
     fun getListAlbums(){
@@ -34,6 +35,7 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
                 try {
                     val estadoInternet = estadoServicios.validarConexionIntenet(aplicacion.applicationContext)
                     val albumsResponse = albumsRepository.getAlbums(estadoInternet)
+                    initialAlbums = albumsResponse
                     _albums.postValue(albumsResponse)
 
                     albumsRepository.guardarAlbumBD(albumsResponse)
@@ -43,6 +45,25 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
 
             }
         }
+    }
+
+    fun orderBy(criterio: String){
+        val albumListSorted = when(criterio) {
+            "NOMBRE" -> initialAlbums.sortedBy { it.name }
+            "GENERO" -> initialAlbums.sortedBy { it.genre }
+            else -> { initialAlbums }
+        }
+        _albums.postValue(albumListSorted)
+    }
+
+    fun filterByAlbumName(name: String) {
+        var filteredList = mutableListOf<Album>()
+        for(album in this.initialAlbums) {
+            if(album.name.lowercase().startsWith(name.lowercase())) {
+                filteredList.add(album)
+            }
+        }
+        _albums.postValue(filteredList)
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
