@@ -13,6 +13,7 @@
         android:padding="16dp"
         android:rotationX="0">
 
+        <!-- Label principal -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
                 android:layout_marginBottom="20dp"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <!-- Campo de busqueda -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
                 android:layout_marginBottom="20dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <!-- Botones de ordenamiento -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,6 +73,7 @@
                 android:textColor="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <!-- Item de la lista 1 -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,6 +127,8 @@
                 android:background="@color/white" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- Item de la lista 1 -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -174,6 +180,33 @@
                 android:layout_marginBottom="20dp"
                 android:alpha="0.5"
                 android:background="@color/white" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- Botón de agregar álbum -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_album"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/rounded_button"
+                android:text="+"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/text_button_add_album"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingLeft="10dp"
+                android:text="@string/add_album"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
