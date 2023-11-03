@@ -13,4 +13,5 @@
     <item name="order_genre_button" type="id" />
     <item name="order_name_button" type="id" />
     <item name="order_artist_button" type="id" />
+    <item name="home_label" type="id" />
 </resources>

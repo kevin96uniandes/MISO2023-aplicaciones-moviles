@@ -22,4 +22,7 @@
     <string name="order_name_label">Nombre</string>
     <string name="title_activity_list_albums">ListAlbumsActivity</string>
     <string name="add_album">Agregar álbum</string>
+    <string name="main_label">Vinilos</string>
+    <string name="visitor_label">Visitante</string>
+    <string name="collector_label">Coleccionista</string>
 </resources>
