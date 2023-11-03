@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,10 +22,24 @@ import com.uniandes.vinyls.viewmodels.ListAlbumsViewModel
 class ListAlbumsFragment : Fragment() {
 
     private var albums: List<Album> = emptyList()
+    private lateinit var userType: String
     companion object {
-        fun newInstance() = ListAlbumsFragment()
+        @JvmStatic
+        fun newInstance(userType: String) =
+            ListAlbumsFragment().apply {
+                arguments = Bundle().apply {
+                    putString("userType", userType)
+                }
+            }
     }
     private lateinit var viewModel: ListAlbumsViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            userType = it.getString("userType")!!
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +73,11 @@ class ListAlbumsFragment : Fragment() {
         val nameButton = view.findViewById<Button>(R.id.order_name_button)
         val artistButton = view.findViewById<Button>(R.id.order_artist_button)
         val searchBox = view.findViewById<SearchView>(R.id.search_albums)
-        val addAlbum = view.findViewById<AppCompatButton>(R.id.add_album)
+        val addAlbum = view.findViewById<LinearLayoutCompat>(R.id.add_album)
+
+        if(userType == "Visitante"){
+            addAlbum.visibility = View.GONE
+        }
 
         searchBox.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(criterio: String?): Boolean {
