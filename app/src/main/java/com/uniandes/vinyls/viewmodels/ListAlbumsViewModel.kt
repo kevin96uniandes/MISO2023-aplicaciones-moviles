@@ -22,7 +22,7 @@ import kotlinx.coroutines.withContext
 
 class ListAlbumsViewModel(application: Application) : AndroidViewModel(application)  {
 
-    private val albumsRepository = AlbumRepository(application)
+    var albumsRepository = AlbumRepository(application)
     private val estadoServicios = EstadoServicios()
     private val _albums = MutableLiveData<List<Album>>()
     private var initialAlbums: List<Album> = emptyList()
