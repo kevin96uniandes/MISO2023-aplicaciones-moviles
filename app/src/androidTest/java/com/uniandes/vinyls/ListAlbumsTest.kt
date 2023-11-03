@@ -21,7 +21,7 @@ class ListAlbumsTest {
     var mActivityTestRule = ActivityScenarioRule(SplashActivity::class.java)
     @Test
     fun useAppContext() {
-        
+
         Thread.sleep(5000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.btn_sign_in_as_collectors)).check(ViewAssertions.matches(
