@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <com.uniandes.vinyls.ui.components.CustomTextView
+                android:id="@+id/listado_albumes_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/list_albums_label"
@@ -64,22 +65,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/order_name_label"
                 android:background="@drawable/rounded_button" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/order_artist_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_artists"
+                android:background="@color/black"
+                android:textColor="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewAlbums"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp" />
 
         <!-- Botón de agregar álbum -->
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/add_album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/add_album"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@drawable/rounded_button"

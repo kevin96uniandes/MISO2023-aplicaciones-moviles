@@ -1,6 +1,8 @@
 package com.uniandes.vinyls
 
+import androidx.lifecycle.ViewModel
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers
@@ -20,12 +22,22 @@ class ListAlbumsTest {
     @get: Rule
     var mActivityTestRule = ActivityScenarioRule(SplashActivity::class.java)
     @Test
-    fun useAppContext() {
+    fun goToAlbumsAsVisitor() {
 
         Thread.sleep(5000L) // Espera por 5 segundos
 
-        Espresso.onView(ViewMatchers.withId(R.id.btn_sign_in_as_collectors)).check(ViewAssertions.matches(
-            ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.btn_sign_in_as_collectors)).perform(
+            ViewActions.click()
+        )
+
+        Espresso.onView(ViewMatchers.withId(R.id.listado_albumes_title)).check(
+            ViewAssertions.matches(ViewMatchers.isDisplayed())
+        )
+
+        Espresso.onView(ViewMatchers.withId(R.id.listado_albumes_title)).check(
+            ViewAssertions.matches(ViewMatchers.withText("Listado de álbumes"))
+        )
+
     }
 
 }

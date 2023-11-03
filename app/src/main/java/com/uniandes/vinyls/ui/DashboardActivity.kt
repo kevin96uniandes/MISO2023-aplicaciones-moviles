@@ -12,16 +12,18 @@ import com.google.android.material.navigation.NavigationView
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.ui.fragments.CreateAlbumFragment
 import com.uniandes.vinyls.ui.fragments.ListAlbumsFragment
+import com.uniandes.vinyls.ui.fragments.visitorHomeFragment
 
 class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var userType: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-
+        userType = intent.getStringExtra("type").toString()
 
         drawer = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view)
@@ -37,6 +39,8 @@ class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItem
         if(savedInstanceState == null) {
             loadDefaultFragment()
         }
+
+
     }
 
     private fun loadDefaultFragment() {
@@ -65,7 +69,14 @@ class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItem
         item.isChecked = true
         when(item.itemId) {
             R.id.nav_item_one -> goToHome()
-            R.id.nav_item_two -> changeFragment(ListAlbumsFragment.newInstance(), item.title.toString())
+            R.id.nav_item_two -> {
+                if (userType == "Visitante") {
+                    changeFragment(visitorHomeFragment.newInstance(), item.title.toString())
+                }else{
+                    changeFragment(ListAlbumsFragment.newInstance(userType), item.title.toString())
+                }
+            }
+
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
@@ -77,4 +88,6 @@ class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItem
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
