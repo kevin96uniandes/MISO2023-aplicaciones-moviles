@@ -1,3 +1,4 @@
+
 package com.uniandes.vinyls.database
 
 import androidx.room.Dao
@@ -12,10 +13,16 @@ interface AlbumDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun create(album: Album)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(album: Album)
 
-    @Query("DELETE FROM albums_table")
+    @Query("SELECT * FROM albums ORDER BY albumId ASC")
+    fun getAlbums(): List<Album>
+
+    @Query("DELETE FROM albums")
     suspend fun deleteAll(): Int
+
+    @Query("SELECT COUNT(*) FROM albums")
+    fun countAlbums(): Int
 
 }
