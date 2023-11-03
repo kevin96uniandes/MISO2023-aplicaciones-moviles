@@ -56,7 +56,6 @@ class ListAlbumsFragment : Fragment() {
 
         val genreButton = view.findViewById<Button>(R.id.order_genre_button)
         val nameButton = view.findViewById<Button>(R.id.order_name_button)
-        val artistButton = view.findViewById<Button>(R.id.order_artist_button)
         val searchBox = view.findViewById<SearchView>(R.id.search_albums)
         val addAlbum = view.findViewById<AppCompatButton>(R.id.add_album)
 
@@ -81,9 +80,6 @@ class ListAlbumsFragment : Fragment() {
             genreButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
             nameButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
             nameButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-            artistButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
-            artistButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-
             viewModel.orderBy("GENERO")
         }
 
@@ -92,19 +88,8 @@ class ListAlbumsFragment : Fragment() {
             genreButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
             nameButton.setBackgroundResource(R.drawable.rounded_button)
             nameButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
-            artistButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
-            artistButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
 
             viewModel.orderBy("NOMBRE")
-        }
-
-        artistButton.setOnClickListener {
-            genreButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
-            genreButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-            nameButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
-            nameButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-            artistButton.setBackgroundResource(R.drawable.rounded_button)
-            artistButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         }
 
         addAlbum.setOnClickListener {

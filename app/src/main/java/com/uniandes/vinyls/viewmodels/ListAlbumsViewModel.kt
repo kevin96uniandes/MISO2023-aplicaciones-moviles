@@ -36,7 +36,7 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
                     val estadoInternet = estadoServicios.validarConexionIntenet(aplicacion.applicationContext)
                     val albumsResponse = albumsRepository.getAlbums(estadoInternet)
                     initialAlbums = albumsResponse
-                    _albums.postValue(albumsResponse)
+                    orderBy("NOMBRE")
 
                     albumsRepository.guardarAlbumBD(albumsResponse)
                 } catch (ex: Exception){
@@ -59,7 +59,7 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
     fun filterByAlbumName(name: String) {
         var filteredList = mutableListOf<Album>()
         for(album in this.initialAlbums) {
-            if(album.name.lowercase().startsWith(name.lowercase())) {
+            if(album.name.lowercase().contains(name.lowercase())) {
                 filteredList.add(album)
             }
         }
