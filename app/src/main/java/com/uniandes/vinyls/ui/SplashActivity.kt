@@ -23,6 +23,7 @@ class SplashActivity : AppCompatActivity() {
 
         // Utiliza corutinas para realizar una tarea diferida
         GlobalScope.launch(Dispatchers.Main) {
+
             delay(SPLASH_TIME_OUT) // Retraso de 2 segundos (equivalente a postDelayed en Handler)
 
             // Coloca el código que deseas ejecutar después del retraso aquí
