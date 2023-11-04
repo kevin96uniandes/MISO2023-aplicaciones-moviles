@@ -1,9 +1,8 @@
 package com.uniandes.vinyls.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.uniandes.vinyls.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,8 +14,6 @@ import kotlinx.coroutines.launch
 
 class CreateAlbumViewModel(application: Application) : AndroidViewModel(application) {
     private val albumRepository = AlbumRepository(application)
-    val nameField = MutableLiveData("")
-    val nameError = MutableLiveData<String?>(null)
     val eventSuccessful = SingleLiveEvent<Boolean>()
 
     fun createAlbum(albumData: Map<String, String>) {
@@ -26,6 +23,7 @@ class CreateAlbumViewModel(application: Application) : AndroidViewModel(applicat
                     albumRepository.createAlbum(albumData)
                     eventSuccessful.postValue(true)
                 } catch(e: Exception) {
+                    Log.e("creating_album", e.stackTraceToString())
                     eventSuccessful.postValue(false)
                 }
             }
@@ -39,15 +37,6 @@ class CreateAlbumViewModel(application: Application) : AndroidViewModel(applicat
                 return CreateAlbumViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
-        }
-    }
-
-    fun validateName() {
-        val name = nameField.value.orEmpty()
-        if (name.isEmpty()) {
-            nameError.value = "El campo de nombre no puede estar vacío"
-        } else {
-            nameError.value = null
         }
     }
 }

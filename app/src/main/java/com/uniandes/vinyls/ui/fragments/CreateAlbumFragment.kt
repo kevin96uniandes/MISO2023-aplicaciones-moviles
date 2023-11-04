@@ -3,7 +3,6 @@ package com.uniandes.vinyls.ui.fragments
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
 import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import com.uniandes.vinyls.Genre
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.RecordLabel
 import com.uniandes.vinyls.isFormSuccess
+import android.text.TextWatcher
 import com.uniandes.vinyls.ui.components.CustomSpinnerAdapter
 import com.uniandes.vinyls.viewmodels.CreateAlbumViewModel
 import java.util.Calendar
@@ -44,7 +44,7 @@ class CreateAlbumFragment : Fragment() {
     private lateinit var twRecordLabelErrorMessage: TextView
     private lateinit var twCoverErrorMessage: TextView
     private lateinit var twReviewErrorMessage: TextView
-    private var userType: String? = null
+    private var shouldRunValidations: Boolean = true
 
     companion object {
         @JvmStatic
@@ -63,6 +63,7 @@ class CreateAlbumFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        shouldRunValidations = false
         return inflater.inflate(R.layout.create_album_fragment, container, false)
     }
 
@@ -81,11 +82,6 @@ class CreateAlbumFragment : Fragment() {
                     R.string.album_created_successful,
                     Toast.LENGTH_LONG
                 ).show()
-
-                val transaction = this.activity?.supportFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.frame_layout, ListAlbumsFragment())
-                transaction?.disallowAddToBackStack()
-                transaction?.commit()
             } else {
                 Toast.makeText(
                     requireContext().applicationContext,
@@ -114,10 +110,16 @@ class CreateAlbumFragment : Fragment() {
         fillSpinner( spRecordLabel, items)
         spinnerEvents(spRecordLabel, items)
         addOpenDatePicker(etReleaseDate)
-        watcherFields()
-
+        if (shouldRunValidations) {
+            watcherFields()
+        }
         btnCreateAlbumEvents()
+        shouldRunValidations = savedInstanceState?.getBoolean("shouldRunValidations", true) ?: true
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("shouldRunValidations", shouldRunValidations)
     }
 
     private fun btnCreateAlbumEvents(){
@@ -210,7 +212,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                isFormSuccess(listOf(Pair(etName, twNameErrorMessage)), requireActivity())
+                if (shouldRunValidations){
+                    isFormSuccess(listOf(Pair(etName, twNameErrorMessage)), requireActivity())
+                }
+
 
             }
 
@@ -224,7 +229,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                isFormSuccess(listOf(Pair(etCoverUrl, twCoverErrorMessage)), requireActivity())
+                if (shouldRunValidations) {
+                    isFormSuccess(listOf(Pair(etCoverUrl, twCoverErrorMessage)), requireActivity())
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -242,7 +250,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                isFormSuccess(listOf(Pair(etReleaseDate, twReleaseDateErrorMessage)), requireActivity())
+                if(shouldRunValidations){
+                    isFormSuccess(listOf(Pair(etReleaseDate, twReleaseDateErrorMessage)), requireActivity())
+                }
+
             }
         })
 
@@ -252,7 +263,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                isFormSuccess(listOf(Pair(etReview, twReviewErrorMessage)), requireActivity())
+                if (shouldRunValidations) {
+                    isFormSuccess(listOf(Pair(etReview, twReviewErrorMessage)), requireActivity())
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
