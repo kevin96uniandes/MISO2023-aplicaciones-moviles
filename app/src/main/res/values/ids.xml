@@ -9,4 +9,11 @@
     <item name="create_album_review" type="id" />
     <item name="create_album_review_char_counter" type="id" />
     <item name="btn_sign_in_as_collectors" type="id" />
+    <item name="create_album_spinner_record_label" type="id"/>
+    <item name="error_message_1" type="id"/>
+    <item name="error_message_2" type="id"/>
+    <item name="error_message_3" type="id"/>
+    <item name="error_message_4" type="id"/>
+    <item name="error_message_5" type="id"/>
+    <item name="error_message_6" type="id"/>
 </resources>

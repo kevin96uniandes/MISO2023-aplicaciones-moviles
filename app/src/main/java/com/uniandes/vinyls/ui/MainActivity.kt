@@ -2,7 +2,6 @@ package com.uniandes.vinyls.ui
 
 import android.os.Bundle
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.databinding.ActivityMainBinding
 
@@ -24,5 +23,6 @@ class MainActivity : CrossIntentActivity() {
         btnSignAsCollector.setOnClickListener {
             nextActivity(DashboardActivity::class.java)
         }
+
     }
 }

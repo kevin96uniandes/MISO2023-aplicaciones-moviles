@@ -18,4 +18,12 @@
     <string name="collectors">Coleccionistas</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="album_created_successful">Álbum creado exitosamente</string>
+    <string name="error_creating_album">Error al crear álbum</string>
+    <string name="error_required_field_and_not_empty">Campo requerido y no puede ser vacío</string>
+    <string name="error_spinner_required">Campo requerido y debe seleccionar un elemento</string>
+    <string name="error_malformed_url">Formato incorrecto. Ej: https://mi-dominio.com</string>
+    <string name="EDIT_TEXT_TYPE_URL">URL</string>
+    <string name="EDIT_TEXT_TYPE_TEXT">TEXT</string>
+    <string name="title_fragment_create_album">Crear Álbum</string>
 </resources>

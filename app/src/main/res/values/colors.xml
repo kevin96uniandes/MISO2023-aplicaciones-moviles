@@ -13,4 +13,5 @@
     <color name="vinyls_black">#000000</color>
     <color name="vinyls_background_gray">#363636</color>
     <color name="vinyls_text_color">#DADADA</color>
+    <color name="vinyls_error_color">#FF0000</color>
 </resources>

@@ -1,12 +1,13 @@
 package com.uniandes.vinyls.models
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import org.json.JSONArray
 import org.json.JSONObject
 
 @Entity(tableName = "albums_table")
 data class Album (
-    val albumId:Int,
+    @PrimaryKey(autoGenerate = true) val albumId:Int,
     val name:String,
     val cover:String,
     val releaseDate:String,

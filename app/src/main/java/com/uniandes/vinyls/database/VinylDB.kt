@@ -9,7 +9,8 @@ import com.uniandes.vinyls.models.Album
 
 @Database(
     entities = [Album::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class VinylDB : RoomDatabase() {
     abstract fun albumDao(): AlbumDAO
