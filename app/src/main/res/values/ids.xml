@@ -9,6 +9,11 @@
     <item name="create_album_review" type="id" />
     <item name="create_album_review_char_counter" type="id" />
     <item name="btn_sign_in_as_collectors" type="id" />
+    <item name="search_albums" type="id" />
+    <item name="order_genre_button" type="id" />
+    <item name="order_name_button" type="id" />
+    <item name="order_artist_button" type="id" />
+    <item name="home_label" type="id" />
     <item name="create_album_spinner_record_label" type="id"/>
     <item name="error_message_1" type="id"/>
     <item name="error_message_2" type="id"/>

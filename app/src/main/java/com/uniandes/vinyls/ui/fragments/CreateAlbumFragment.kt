@@ -30,6 +30,7 @@ private const val ALBUM_ID_PARAM = "albumId"
 class CreateAlbumFragment : Fragment() {
     private var selectedGenre: String = ""
     private var selectedRecordLabel: String = ""
+    private lateinit var viewModel: CreateAlbumViewModel
     private lateinit var etName: EditText
     private lateinit var etCoverUrl: EditText
     private lateinit var etReleaseDate: EditText
@@ -44,7 +45,7 @@ class CreateAlbumFragment : Fragment() {
     private lateinit var twCoverErrorMessage: TextView
     private lateinit var twReviewErrorMessage: TextView
     private var userType: String? = null
-    private lateinit var viewModel: CreateAlbumViewModel
+
     companion object {
         @JvmStatic
         fun newInstance() =
@@ -62,8 +63,6 @@ class CreateAlbumFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-
         return inflater.inflate(R.layout.create_album_fragment, container, false)
     }
 

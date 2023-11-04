@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import org.json.JSONArray
 import org.json.JSONObject
 
-@Entity(tableName = "albums_table")
+@Entity(tableName = "albums")
 data class Album (
-    @PrimaryKey(autoGenerate = true) val albumId:Int,
+    @PrimaryKey(autoGenerate = true)
+    val albumId:Int,
     val name:String,
     val cover:String,
     val releaseDate:String,

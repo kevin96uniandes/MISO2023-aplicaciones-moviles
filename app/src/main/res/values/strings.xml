@@ -18,6 +18,13 @@
     <string name="collectors">Coleccionistas</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="list_albums_label">Listado de álbumes</string>
+    <string name="order_name_label">Nombre</string>
+    <string name="title_activity_list_albums">ListAlbumsActivity</string>
+    <string name="add_album">Agregar álbum</string>
+    <string name="main_label">Vinilos</string>
+    <string name="visitor_label">Visitante</string>
+    <string name="collector_label">Coleccionista</string>
     <string name="album_created_successful">Álbum creado exitosamente</string>
     <string name="error_creating_album">Error al crear álbum</string>
     <string name="error_required_field_and_not_empty">Campo requerido y no puede ser vacío</string>
