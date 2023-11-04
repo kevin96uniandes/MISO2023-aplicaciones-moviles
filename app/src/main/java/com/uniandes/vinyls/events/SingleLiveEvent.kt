@@ -19,26 +19,33 @@ se dispare nuevamente si el usuario gira la pantalla o se producen cambios en el
 actividad.
  */
 class SingleLiveEvent<T> : MutableLiveData<T>() {
+
+    companion object {
+        private val TAG = "SingleLiveEvent"
+    }
+
     private val pending = AtomicBoolean(false)
 
+    @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
-        if (hasActiveObservers()) {
-            // Solo una observación activa se permitirá
-            super.observe(owner, Observer { t ->
-                if (pending.compareAndSet(true, false)) {
-                    observer.onChanged(t)
-                }
-            })
-        } else {
-            super.observe(owner, observer)
+        // Solo una observación activa se permitirá
+        super.observe(owner, Observer { t ->
+            if (pending.compareAndSet(true, false)) {
+                observer.onChanged(t)
+            }
+        })
+    }
+
+    @MainThread
+    override fun setValue(t: T?) {
+        if (t != null) {
+            pending.set(true)
+            super.setValue(t)
         }
     }
 
-    override fun setValue(t: T?) {
-        pending.set(true)
-        super.setValue(t)
-    }
-
+    // Método adicional para marcar el evento como no pendiente
+    @MainThread
     fun call() {
         value = null
     }

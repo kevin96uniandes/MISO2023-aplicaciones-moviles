@@ -1,6 +1,5 @@
 package com.uniandes.vinyls.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.util.ArrayMap
 import androidx.appcompat.app.AppCompatActivity

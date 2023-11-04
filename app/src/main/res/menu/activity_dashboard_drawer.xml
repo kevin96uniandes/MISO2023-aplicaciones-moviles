@@ -17,9 +17,6 @@
 
         <item android:id="@+id/nav_item_four"
             android:title="@string/collectors"/>
-
-        <item android:id="@+id/nav_item_five"
-            android:title="Visitante"/>
     </group>
 
 </menu>

@@ -27,11 +27,22 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:spinnerItemStyle">@style/CustomSpinnerStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/CustomSpinnerStyle</item>
+
     </style>
 
     <style name="CustomSpinnerStyle">
-        <item name="android:textColor">@color/vinyls_yellow</item>
+        <item name="android:dropDownSelector">@drawable/spinner_item_selector</item>
+        <item name="android:textColor">@color/vinyls_black</item>
         <!-- Otros atributos de estilo de los elementos del Spinner -->
+    </style>
+
+    <style name="ErrorTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/vinyls_error_color</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <!-- Agrega otros atributos personalizados aquí -->
     </style>
 </resources>

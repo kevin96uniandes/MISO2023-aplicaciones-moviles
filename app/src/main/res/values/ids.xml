@@ -14,4 +14,11 @@
     <item name="order_name_button" type="id" />
     <item name="order_artist_button" type="id" />
     <item name="home_label" type="id" />
+    <item name="create_album_spinner_record_label" type="id"/>
+    <item name="error_message_1" type="id"/>
+    <item name="error_message_2" type="id"/>
+    <item name="error_message_3" type="id"/>
+    <item name="error_message_4" type="id"/>
+    <item name="error_message_5" type="id"/>
+    <item name="error_message_6" type="id"/>
 </resources>

@@ -2,10 +2,8 @@ package com.uniandes.vinyls.ui
 
 import android.os.Bundle
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.databinding.ActivityMainBinding
-import com.uniandes.vinyls.ui.fragments.CreateAlbumFragment
 
 class MainActivity : CrossIntentActivity() {
     private lateinit var btnSignAsCollector: Button
@@ -29,12 +27,6 @@ class MainActivity : CrossIntentActivity() {
         }
         btnSignAsVisitor.setOnClickListener {
             nextActivity(activity =  DashboardActivity::class.java, extras = listOf(Pair("type","Visitante")))
-
-            /*val transaction = this.activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame_layout, CreateAlbumFragment())
-            transaction?.disallowAddToBackStack()
-            transaction?.commit()*/
-
         }
     }
 }
