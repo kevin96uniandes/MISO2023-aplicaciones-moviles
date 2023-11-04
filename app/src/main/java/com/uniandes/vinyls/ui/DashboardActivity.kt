@@ -73,7 +73,8 @@ class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItem
                 if (userType == "Visitante") {
                     changeFragment(visitorHomeFragment.newInstance(), item.title.toString())
                 }else{
-                    changeFragment(ListAlbumsFragment.newInstance(userType), item.title.toString())
+                    //changeFragment(ListAlbumsFragment.newInstance(userType), item.title.toString())
+                    changeFragment(CreateAlbumFragment.newInstance(), item.title.toString())
                 }
             }
 
