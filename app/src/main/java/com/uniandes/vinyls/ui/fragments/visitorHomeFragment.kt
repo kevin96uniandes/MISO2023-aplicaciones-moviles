@@ -32,7 +32,7 @@ class visitorHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
         super.onViewCreated(view, savedInstanceState)
 
-        val gotoAlbums = view.findViewById<ImageView>(R.id.home_disco)
+        val gotoAlbums = view.findViewById<ImageView>(R.id.go_to_album)
 
         gotoAlbums.setOnClickListener {
             val transaction = this.activity?.supportFragmentManager?.beginTransaction()

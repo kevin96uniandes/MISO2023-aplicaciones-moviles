@@ -36,6 +36,7 @@ class AlbumAdapter(private val albums: List<Album>) :
 
             Picasso.get()
                 .load(album.cover)
+                .error(R.drawable.ic_broken_image)
                 .into(imageView)
         }
     }
