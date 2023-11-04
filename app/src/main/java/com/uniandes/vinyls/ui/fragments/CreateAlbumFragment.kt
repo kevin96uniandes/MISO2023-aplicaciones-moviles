@@ -3,7 +3,6 @@ package com.uniandes.vinyls.ui.fragments
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
 import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import com.uniandes.vinyls.Genre
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.RecordLabel
 import com.uniandes.vinyls.isFormSuccess
+import android.text.TextWatcher
 import com.uniandes.vinyls.ui.components.CustomSpinnerAdapter
 import com.uniandes.vinyls.viewmodels.CreateAlbumViewModel
 import java.util.Calendar
@@ -90,22 +90,6 @@ class CreateAlbumFragment : Fragment() {
                 ).show()
             }
         }
-        activity.title = activity.getText(R.string.title_fragment_create_album).toString()
-        viewModel.eventSuccessful.observe(viewLifecycleOwner) {
-            if (it == true) {
-                Toast.makeText(
-                    requireContext().applicationContext,
-                    R.string.album_created_successful,
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Toast.makeText(
-                    requireContext().applicationContext,
-                    R.string.error_creating_album,
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
         etName = view.findViewById(R.id.create_album_name)
         etReleaseDate = view.findViewById(R.id.create_album_release_date)
         spGenre = view.findViewById(R.id.create_album_musical_genre)
@@ -140,28 +124,30 @@ class CreateAlbumFragment : Fragment() {
 
     private fun btnCreateAlbumEvents(){
         btnCreateAlbum.setOnClickListener {
-            if (isFormSuccess(
-                    listOf(
-                        Pair(etName, twNameErrorMessage),
-                        Pair(etCoverUrl, twCoverErrorMessage),
-                        Pair(etReview, twReviewErrorMessage),
-                        Pair(etReleaseDate, twReleaseDateErrorMessage),
-                        Pair(spGenre, twGenreErrorMessage),
-                        Pair(spRecordLabel, twRecordLabelErrorMessage),
-                    ), requireActivity()
-                )
-            ) {
-                val albumParams: ArrayMap<String, String> = ArrayMap()
-                albumParams["name"] = etName.text.toString()
-                albumParams["cover"] = etCoverUrl.text.toString()
-                albumParams["releaseDate"] = etReleaseDate.text.toString()
-                albumParams["description"] = etReview.text.toString()
-                albumParams["genre"] = selectedGenre
-                albumParams["recordLabel"] = selectedRecordLabel
-                viewModel.createAlbum(albumParams)
-            }
+                if (isFormSuccess(
+                        listOf(
+                            Pair(etName, twNameErrorMessage),
+                            Pair(etCoverUrl, twCoverErrorMessage),
+                            Pair(etReview, twReviewErrorMessage),
+                            Pair(etReleaseDate, twReleaseDateErrorMessage),
+                            Pair(spGenre, twGenreErrorMessage),
+                            Pair(spRecordLabel, twRecordLabelErrorMessage),
+                        ), requireActivity()
+                    )
+                ) {
+                    val albumParams: ArrayMap<String, String> = ArrayMap()
+                    albumParams["name"] = etName.text.toString()
+                    albumParams["cover"] = etCoverUrl.text.toString()
+                    albumParams["releaseDate"] = etReleaseDate.text.toString()
+                    albumParams["description"] = etReview.text.toString()
+                    albumParams["genre"] = selectedGenre
+                    albumParams["recordLabel"] = selectedRecordLabel
+                    viewModel.createAlbum(albumParams)
+                }
         }
     }
+
+
 
     fun fillSpinner(spinner: Spinner, items: List<String>){
         val adapter = CustomSpinnerAdapter(requireContext().applicationContext, android.R.layout.simple_spinner_item, items)

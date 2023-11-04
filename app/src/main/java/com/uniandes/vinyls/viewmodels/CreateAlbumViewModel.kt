@@ -3,8 +3,6 @@ package com.uniandes.vinyls.viewmodels
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.uniandes.vinyls.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,5 +39,4 @@ class CreateAlbumViewModel(application: Application) : AndroidViewModel(applicat
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
-
 }

@@ -22,7 +22,7 @@ import com.uniandes.vinyls.viewmodels.ListAlbumsViewModel
 class ListAlbumsFragment : Fragment() {
 
     private var albums: List<Album> = emptyList()
-    private lateinit var userType: String
+    private var userType: String = "Coleccionista"
     companion object {
         @JvmStatic
         fun newInstance(userType: String) =
