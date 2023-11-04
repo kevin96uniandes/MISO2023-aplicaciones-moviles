@@ -49,8 +49,8 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
 
     fun orderBy(criterio: String){
         val albumListSorted = when(criterio) {
-            "NOMBRE" -> initialAlbums.sortedBy { it.name }
-            "GENERO" -> initialAlbums.sortedBy { it.genre }
+            "NOMBRE" -> initialAlbums.sortedBy { it.name.lowercase() }
+            "GENERO" -> initialAlbums.sortedBy { it.genre.lowercase() }
             else -> { initialAlbums }
         }
         _albums.postValue(albumListSorted)
