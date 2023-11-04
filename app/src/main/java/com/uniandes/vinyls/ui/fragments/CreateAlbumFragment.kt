@@ -44,7 +44,7 @@ class CreateAlbumFragment : Fragment() {
     private lateinit var twRecordLabelErrorMessage: TextView
     private lateinit var twCoverErrorMessage: TextView
     private lateinit var twReviewErrorMessage: TextView
-    private var userType: String? = null
+    private var shouldRunValidations: Boolean = true
 
     companion object {
         @JvmStatic
@@ -63,6 +63,7 @@ class CreateAlbumFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        shouldRunValidations = false
         return inflater.inflate(R.layout.create_album_fragment, container, false)
     }
 
@@ -74,6 +75,22 @@ class CreateAlbumFragment : Fragment() {
         val activity = requireNotNull(this.activity)
         activity.title = activity.getText(R.string.title_fragment_create_album).toString()
         viewModel = ViewModelProvider(this, CreateAlbumViewModel.Factory(activity.application))[CreateAlbumViewModel::class.java]
+        viewModel.eventSuccessful.observe(viewLifecycleOwner) {
+            if (it == true) {
+                Toast.makeText(
+                    requireContext().applicationContext,
+                    R.string.album_created_successful,
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    requireContext().applicationContext,
+                    R.string.error_creating_album,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+        activity.title = activity.getText(R.string.title_fragment_create_album).toString()
         viewModel.eventSuccessful.observe(viewLifecycleOwner) {
             if (it == true) {
                 Toast.makeText(
@@ -109,34 +126,40 @@ class CreateAlbumFragment : Fragment() {
         fillSpinner( spRecordLabel, items)
         spinnerEvents(spRecordLabel, items)
         addOpenDatePicker(etReleaseDate)
-        watcherFields()
-
+        if (shouldRunValidations) {
+            watcherFields()
+        }
         btnCreateAlbumEvents()
+        shouldRunValidations = savedInstanceState?.getBoolean("shouldRunValidations", true) ?: true
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("shouldRunValidations", shouldRunValidations)
     }
 
     private fun btnCreateAlbumEvents(){
         btnCreateAlbum.setOnClickListener {
-                if (isFormSuccess(
-                        listOf(
-                            Pair(etName, twNameErrorMessage),
-                            Pair(etCoverUrl, twCoverErrorMessage),
-                            Pair(etReview, twReviewErrorMessage),
-                            Pair(etReleaseDate, twReleaseDateErrorMessage),
-                            Pair(spGenre, twGenreErrorMessage),
-                            Pair(spRecordLabel, twRecordLabelErrorMessage),
-                        ), requireActivity()
-                    )
-                ) {
-                    val albumParams: ArrayMap<String, String> = ArrayMap()
-                    albumParams["name"] = etName.text.toString()
-                    albumParams["cover"] = etCoverUrl.text.toString()
-                    albumParams["releaseDate"] = etReleaseDate.text.toString()
-                    albumParams["description"] = etReview.text.toString()
-                    albumParams["genre"] = selectedGenre
-                    albumParams["recordLabel"] = selectedRecordLabel
-                    viewModel.createAlbum(albumParams)
-                }
+            if (isFormSuccess(
+                    listOf(
+                        Pair(etName, twNameErrorMessage),
+                        Pair(etCoverUrl, twCoverErrorMessage),
+                        Pair(etReview, twReviewErrorMessage),
+                        Pair(etReleaseDate, twReleaseDateErrorMessage),
+                        Pair(spGenre, twGenreErrorMessage),
+                        Pair(spRecordLabel, twRecordLabelErrorMessage),
+                    ), requireActivity()
+                )
+            ) {
+                val albumParams: ArrayMap<String, String> = ArrayMap()
+                albumParams["name"] = etName.text.toString()
+                albumParams["cover"] = etCoverUrl.text.toString()
+                albumParams["releaseDate"] = etReleaseDate.text.toString()
+                albumParams["description"] = etReview.text.toString()
+                albumParams["genre"] = selectedGenre
+                albumParams["recordLabel"] = selectedRecordLabel
+                viewModel.createAlbum(albumParams)
+            }
         }
     }
 
@@ -203,7 +226,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                isFormSuccess(listOf(Pair(etName, twNameErrorMessage)), requireActivity())
+                if (shouldRunValidations){
+                    isFormSuccess(listOf(Pair(etName, twNameErrorMessage)), requireActivity())
+                }
+
 
             }
 
@@ -217,7 +243,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                isFormSuccess(listOf(Pair(etCoverUrl, twCoverErrorMessage)), requireActivity())
+                if (shouldRunValidations) {
+                    isFormSuccess(listOf(Pair(etCoverUrl, twCoverErrorMessage)), requireActivity())
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -235,7 +264,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                isFormSuccess(listOf(Pair(etReleaseDate, twReleaseDateErrorMessage)), requireActivity())
+                if(shouldRunValidations){
+                    isFormSuccess(listOf(Pair(etReleaseDate, twReleaseDateErrorMessage)), requireActivity())
+                }
+
             }
         })
 
@@ -245,7 +277,10 @@ class CreateAlbumFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                isFormSuccess(listOf(Pair(etReview, twReviewErrorMessage)), requireActivity())
+                if (shouldRunValidations) {
+                    isFormSuccess(listOf(Pair(etReview, twReviewErrorMessage)), requireActivity())
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
