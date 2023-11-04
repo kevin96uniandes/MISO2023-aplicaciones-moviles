@@ -81,6 +81,11 @@ class CreateAlbumFragment : Fragment() {
                     R.string.album_created_successful,
                     Toast.LENGTH_LONG
                 ).show()
+
+                val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(R.id.frame_layout, ListAlbumsFragment())
+                transaction?.disallowAddToBackStack()
+                transaction?.commit()
             } else {
                 Toast.makeText(
                     requireContext().applicationContext,
@@ -139,6 +144,8 @@ class CreateAlbumFragment : Fragment() {
                 }
         }
     }
+
+
 
     fun fillSpinner(spinner: Spinner, items: List<String>){
         val adapter = CustomSpinnerAdapter(requireContext().applicationContext, android.R.layout.simple_spinner_item, items)
