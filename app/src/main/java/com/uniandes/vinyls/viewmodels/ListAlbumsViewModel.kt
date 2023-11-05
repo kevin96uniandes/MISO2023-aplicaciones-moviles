@@ -38,7 +38,7 @@ class ListAlbumsViewModel(application: Application) : AndroidViewModel(applicati
                     initialAlbums = albumsResponse
                     orderBy("NOMBRE")
 
-                    albumsRepository.guardarAlbumBD(albumsResponse)
+                    albumsRepository.guardarAlbumsBD(albumsResponse)
                 } catch (ex: Exception){
                     Log.e("Error", "Ha ocurrido una excepción: ${ex.message} ${ex.localizedMessage} ${ex.printStackTrace()}")
                 }

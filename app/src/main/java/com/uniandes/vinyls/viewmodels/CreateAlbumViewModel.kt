@@ -10,17 +10,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.uniandes.vinyls.events.SingleLiveEvent
+import com.uniandes.vinyls.utils.EstadoServicios
 import kotlinx.coroutines.launch
 
 class CreateAlbumViewModel(application: Application) : AndroidViewModel(application) {
     private val albumRepository = AlbumRepository(application)
     val eventSuccessful = SingleLiveEvent<Boolean>()
+    private val estadoServicios = EstadoServicios()
+    val aplicacion = application
 
     fun createAlbum(albumData: Map<String, String>) {
         viewModelScope.launch(Dispatchers.Default) {
             withContext(Dispatchers.IO){
                 try {
-                    albumRepository.createAlbum(albumData)
+                    val estadoInternet = estadoServicios.validarConexionIntenet(aplicacion.applicationContext)
+                    albumRepository.createAlbum(albumData, estadoInternet)
                     eventSuccessful.postValue(true)
                 } catch(e: Exception) {
                     Log.e("creating_album", e.stackTraceToString())
