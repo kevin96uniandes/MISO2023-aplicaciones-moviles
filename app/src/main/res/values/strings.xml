@@ -34,4 +34,5 @@
     <string name="EDIT_TEXT_TYPE_URL">URL</string>
     <string name="EDIT_TEXT_TYPE_TEXT">TEXT</string>
     <string name="title_fragment_create_album">Crear Álbum</string>
+    <string name="filter_album">Buscar álbumes...</string>
 </resources>
