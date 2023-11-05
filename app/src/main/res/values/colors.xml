@@ -9,9 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--Vynils dark-->
-    <color name="vinyls_yellow">#BFC202</color>
-    <color name="vinyls_black">#000000</color>
-    <color name="vinyls_background_gray">#363636</color>
-    <color name="vinyls_text_color">#DADADA</color>
-    <color name="vinyls_error_color">#FF0000</color>
+    <color name="vynils_yellow">#BFC202</color>
+    <color name="vynils_background_activity">#000000</color>
+    <color name="vynils_background_components">#363636</color>
+    <color name="vynils_text_color">#DADADA</color>
 </resources>
