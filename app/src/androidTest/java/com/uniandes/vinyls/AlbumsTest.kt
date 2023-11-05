@@ -150,8 +150,6 @@ class AlbumsTest {
         Thread.sleep(5000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
-            ViewActions.scrollTo()
-        ).perform(
             ViewActions.click()
         )
 
@@ -179,16 +177,18 @@ class AlbumsTest {
         Thread.sleep(5000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
-            ViewActions.scrollTo()
-        ).perform(
             ViewActions.click()
         )
+
+        Thread.sleep(2000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.create_album_btn_save)).perform(
             ViewActions.scrollTo()
         ).perform(
             ViewActions.click()
         )
+
+        Thread.sleep(2000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.error_message_1)).check(
             ViewAssertions.matches(ViewMatchers.isDisplayed())
@@ -230,8 +230,6 @@ class AlbumsTest {
         Thread.sleep(5000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
-            ViewActions.scrollTo()
-        ).perform(
             ViewActions.click()
         )
 
@@ -270,8 +268,6 @@ class AlbumsTest {
         Thread.sleep(5000L) // Espera por 5 segundos
 
         Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
-            ViewActions.scrollTo()
-        ).perform(
             ViewActions.click()
         )
 
@@ -312,11 +308,9 @@ class AlbumsTest {
 
         Thread.sleep(5000L) // Espera por 5 segundos
 
-        Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
-            ViewActions.scrollTo()
-        ).perform(
-            ViewActions.click()
-        )
+       Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
+           ViewActions.click()
+       )
 
         val calendar = Calendar.getInstance()
 
