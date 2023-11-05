@@ -68,7 +68,8 @@ class ListAlbumsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
         super.onViewCreated(view, savedInstanceState)
-
+        val activity = requireNotNull(this.activity)
+        activity.title = activity.getText(R.string.menu_albums).toString()
         val genreButton = view.findViewById<Button>(R.id.order_genre_button)
         val nameButton = view.findViewById<Button>(R.id.order_name_button)
         val searchBox = view.findViewById<SearchView>(R.id.search_albums)
