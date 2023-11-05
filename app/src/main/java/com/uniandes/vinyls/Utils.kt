@@ -1,12 +1,16 @@
 package com.uniandes.vinyls
 
 import android.app.Activity
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import com.uniandes.vinyls.ui.components.CustomEditText
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 private class Utils
 
@@ -29,6 +33,13 @@ fun <T : View>isFormSuccess(pairs: List<Pair<T,TextView>>, activity: Activity ):
                             errorTextView.text = message
                         }
                     }
+                    if (editText.id == R.id.create_album_release_date){
+                        if (!validarFechas(editText.text)){
+                            message = activity.getText(R.string.error_date_before).toString()
+                            errorTextView.text = message
+                        }
+                    }
+
                 }
             }
             is EditText -> {
@@ -57,4 +68,19 @@ fun <T : View>isFormSuccess(pairs: List<Pair<T,TextView>>, activity: Activity ):
     }
 
     return listErrorTextView.all { it.visibility == View.GONE }
+}
+
+fun validarFechas(fechaInputText: String): Boolean{
+    val fechaActual = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+    val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+
+    try {
+        val dateIngresada = dateFormat.parse(fechaInputText)
+        val dateActual = dateFormat.parse(fechaActual)
+
+        return dateIngresada.before(dateActual)
+    } catch(e: Exception) {
+        Log.e("validarFechas", "error a la hora de formatear las fechas ${e.printStackTrace()}", )
+        return false
+    }
 }
