@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.appcompat.widget.SearchView
@@ -23,6 +24,7 @@ class ListAlbumsFragment : Fragment() {
 
     private var albums: List<Album> = emptyList()
     private var userType: String = "Coleccionista"
+    private lateinit var loadingProgressBar: ProgressBar
     companion object {
         @JvmStatic
         fun newInstance(userType: String) =
@@ -47,15 +49,21 @@ class ListAlbumsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_list_albums, container, false)
 
-        viewModel = ViewModelProvider(this, ListAlbumsViewModel.Factory(requireActivity().application)).get(ListAlbumsViewModel::class.java)
+        viewModel = ViewModelProvider(this, ListAlbumsViewModel.Factory(requireActivity().application))[ListAlbumsViewModel::class.java]
         viewModel.getListAlbums()
 
         viewModel.albums.observe(viewLifecycleOwner) { albums ->
+            val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewAlbums)
+            recyclerView.visibility = View.GONE
+            loadingProgressBar.visibility = View.VISIBLE
+
             this.albums = albums
             val albumAdapter = AlbumAdapter(this.albums)
-            val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewAlbums)
+
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = albumAdapter
+            loadingProgressBar.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
         }
 
         return view
@@ -73,8 +81,8 @@ class ListAlbumsFragment : Fragment() {
         val genreButton = view.findViewById<Button>(R.id.order_genre_button)
         val nameButton = view.findViewById<Button>(R.id.order_name_button)
         val searchBox = view.findViewById<SearchView>(R.id.search_albums)
-        val addAlbum = view.findViewById<LinearLayoutCompat>(R.id.add_album)
-
+        val addAlbum = view.findViewById<Button>(R.id.add_album)
+        loadingProgressBar = view.findViewById<ProgressBar>(R.id.loadingProgressBar)
         if(userType == "Visitante"){
             addAlbum.visibility = View.GONE
         }
