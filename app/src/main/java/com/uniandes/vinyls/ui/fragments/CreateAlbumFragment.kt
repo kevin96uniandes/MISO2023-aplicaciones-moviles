@@ -20,8 +20,15 @@ import com.uniandes.vinyls.R
 import com.uniandes.vinyls.RecordLabel
 import com.uniandes.vinyls.isFormSuccess
 import android.text.TextWatcher
+import com.uniandes.vinyls.ui.components.CustomEditText
 import com.uniandes.vinyls.ui.components.CustomSpinnerAdapter
+import com.uniandes.vinyls.ui.components.CustomTextView
 import com.uniandes.vinyls.viewmodels.CreateAlbumViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.Calendar
 
 
@@ -44,7 +51,7 @@ class CreateAlbumFragment : Fragment() {
     private lateinit var twRecordLabelErrorMessage: TextView
     private lateinit var twCoverErrorMessage: TextView
     private lateinit var twReviewErrorMessage: TextView
-    private var shouldRunValidations: Boolean = true
+    private var shouldRunValidations: Boolean = false
 
     companion object {
         @JvmStatic
@@ -107,6 +114,7 @@ class CreateAlbumFragment : Fragment() {
         twRecordLabelErrorMessage = view.findViewById(R.id.error_message_4)
         twCoverErrorMessage = view.findViewById(R.id.error_message_5)
         twReviewErrorMessage = view.findViewById(R.id.error_message_6)
+
         var items = listOf("-- Seleccione género --") + Genre.values().map { it.genre }
         fillSpinner( spGenre, items)
         spinnerEvents(spGenre, items)
@@ -114,16 +122,27 @@ class CreateAlbumFragment : Fragment() {
         fillSpinner( spRecordLabel, items)
         spinnerEvents(spRecordLabel, items)
         addOpenDatePicker(etReleaseDate)
-        if (shouldRunValidations) {
+        //if (shouldRunValidations) {
+
+        //}
+
+        val scope = CoroutineScope(Dispatchers.Main)
+        val textWatchers = scope.async {
+            //val components: List<Pair<EditText, TextView>> = listComponents()
+            //components.map { (editText, textView) ->
+
+            //}
             watcherFields()
         }
-        btnCreateAlbumEvents()
-        shouldRunValidations = savedInstanceState?.getBoolean("shouldRunValidations", true) ?: true
-    }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean("shouldRunValidations", shouldRunValidations)
+        scope.launch {
+            textWatchers.await()
+            // En este punto, todas las tareas asincrónicas se han completado.
+            // Puedes continuar con tu lógica aquí.
+        }
+
+        shouldRunValidations = true
+        btnCreateAlbumEvents()
     }
 
     private fun btnCreateAlbumEvents(){
@@ -149,6 +168,15 @@ class CreateAlbumFragment : Fragment() {
                     viewModel.createAlbum(albumParams)
                 }
         }
+    }
+
+    private fun listComponents(): List<Pair<EditText, TextView>> {
+        return listOf(
+            Pair(etName, twNameErrorMessage),
+            Pair(etCoverUrl, twCoverErrorMessage),
+            Pair(etReview, twReviewErrorMessage),
+            Pair(etReleaseDate, twReleaseDateErrorMessage)
+        )
     }
 
 
@@ -208,6 +236,26 @@ class CreateAlbumFragment : Fragment() {
             datePickerDialog.show()
         }
     }
+/*
+    private fun watcherFields(editText: EditText?, errorTextView: TextView?, state: Boolean): TextWatcher {
+        shouldRunValidations = state
+        return object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (shouldRunValidations){
+                    if (editText != null && errorTextView != null) {
+                        isFormSuccess(listOf(Pair(editText, errorTextView)), requireActivity())
+                    }
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        }
+    }
+*/
 
     private fun watcherFields(){
         etName.addTextChangedListener(object : TextWatcher {
@@ -279,4 +327,5 @@ class CreateAlbumFragment : Fragment() {
         })
 
     }
+
 }
