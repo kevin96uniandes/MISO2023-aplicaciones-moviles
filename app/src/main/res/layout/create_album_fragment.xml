@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CreateAlbumFragment"
+    android:background="@color/vinyls_black"
+    >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name" />
+
+            <com.uniandes.vinyls.ui.components.CustomEditText
+                android:id="@+id/create_album_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:maxLength="100"
+                android:hint="@string/write_your_name"
+                app:type="@string/EDIT_TEXT_TYPE_TEXT"/>
+            <TextView
+                android:id="@+id/error_message_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/create_album_name"
+                android:layout_below="@+id/create_album_name"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/release_date" />
+
+            <com.uniandes.vinyls.ui.components.CustomEditText
+                android:id="@+id/create_album_release_date"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="@string/dd_mm_aaaa"
+                android:focusable="false"
+                android:clickable="true"
+                app:type="@string/EDIT_TEXT_TYPE_TEXT"
+                />
+            <TextView
+                android:id="@+id/error_message_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/create_album_release_date"
+                android:layout_below="@+id/create_album_release_date"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/musical_genre" />
+
+            <Spinner
+                android:id="@+id/create_album_musical_genre"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_background"
+                android:textSize="16sp"
+                android:textColor="@color/vinyls_yellow"
+                android:paddingStart="5sp"
+                />
+            <TextView
+                android:id="@+id/error_message_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/create_album_musical_genre"
+                android:layout_below="@+id/create_album_musical_genre"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_album_record_label" />
+
+            <Spinner
+                android:id="@+id/create_album_spinner_record_label"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_background"
+                android:textSize="16sp"
+                android:textColor="@color/vinyls_yellow"
+                android:paddingStart="5sp"
+                />
+            <TextView
+                android:id="@+id/error_message_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/create_album_spinner_record_label"
+                android:layout_below="@+id/create_album_spinner_record_label"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cover_image" />
+
+            <com.uniandes.vinyls.ui.components.CustomEditText
+                android:id="@+id/create_album_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:maxLength="100"
+                android:hint="@string/cover_image"
+                app:type="@string/EDIT_TEXT_TYPE_URL"/>
+            <TextView
+                android:id="@+id/error_message_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/create_album_cover_image"
+                android:layout_below="@+id/create_album_cover_image"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/album_review" />
+
+            <com.uniandes.vinyls.ui.components.CustomEditText
+                android:id="@+id/create_album_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                app:type="@string/EDIT_TEXT_TYPE_TEXT"/>
+
+            <TextView
+                android:id="@+id/create_album_review_char_counter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:textColor="@color/vinyls_text_color"
+                android:textSize="9sp"
+                android:textStyle="normal"
+                />
+            <TextView
+                android:id="@+id/error_message_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/create_album_review_char_counter"
+                android:layout_below="@+id/create_album_review_char_counter"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomButton
+                android:id="@+id/create_album_btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
