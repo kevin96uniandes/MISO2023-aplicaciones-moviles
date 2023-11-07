@@ -37,7 +37,7 @@ private const val ALBUM_ID_PARAM = "albumId"
 class CreateAlbumFragment : Fragment() {
     private var selectedGenre: String = ""
     private var selectedRecordLabel: String = ""
-    lateinit var viewModel: CreateAlbumViewModel
+    private lateinit var viewModel: CreateAlbumViewModel
     private lateinit var etName: EditText
     private lateinit var etCoverUrl: EditText
     private lateinit var etReleaseDate: EditText
