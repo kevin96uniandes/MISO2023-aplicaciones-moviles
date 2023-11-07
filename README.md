@@ -24,9 +24,13 @@ https://developer.android.com/studio
 
 ![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/fb450313-feff-4010-8b50-5e117060368c)
 
-3. Hacer la sincronización del proyecto con los archivos graddles. Este proceso sucede automaticamente al abrir el proyecto en Android Studio.
+3. Hacer la sincronización del proyecto con los archivos graddles. Este proceso sucede automaticamente al abrir el proyecto en Android Studio, adicionalmente puede contruir el proyecto de manera manual usando Make Project y puedes ir a file -> sync project with gradle file
 
-4. En la barra superior seleccionamos la app a depslegar y el dispotivo que usaremos como emulador, pueden ser nuestro celular personal o un emulador 
+![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/85e7c4a4-1c56-4f37-9968-ec14dcea80bf)
+ 
+![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/60090c59-48a3-4f48-8a26-fc466cedcaa2)
+
+6. En la barra superior seleccionamos la app a desplegar y el dispotivo que usaremos como emulador, pueden ser nuestro celular personal o un emulador 
 
 ![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/ec4f0e8f-42a4-4533-8f64-478a28705313)
 
@@ -44,7 +48,7 @@ https://developer.android.com/studio
 
 ![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/ba72d251-c872-4c15-9d85-97d54ac43abf)
 
-3. Cuando le de ejecutar deberia salir en la sección de ejecución, el nombre de la clase test y le emulador en donde se ejcutara, al igual que la consola de construcción  y la ejecución de lso test
+3. Cuando le de ejecutar deberia salir en la sección de ejecución, el nombre de la clase test y el emulador en donde se ejcutara, al igual que la consola de construcción  y la ejecución de los test
 
 ![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/050596ba-3e9d-4018-be29-94b5bdd0cec6)
 
@@ -52,10 +56,14 @@ https://developer.android.com/studio
 
 ## Ejecución del APK
 
-En el repositorio, en la seccion wiki se encuentra el archivo Vynils-Iteracion-1.apk, para que lo descarguen e instalen la app en su dispositivo móvil Android con el objetivo de realizar las pruebas pertinentes.
+En el repositorio, en la seccion wiki se encuentra el archivo Vynils-Iteracion-1.apk, para que lo descarguen e instalen la app en su dispositivo móvil Android con el objetivo de realizar las pruebas pertinentes. 
+
+NOTA: A la hora de instalar el apk en tu celular, ese te mostrara multiples alertas por ser un APK externo, por favor aceptar todas
+
+[link del apk](https://uniandes-my.sharepoint.com/personal/k_maldonadod_uniandes_edu_co/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fk%5Fmaldonadod%5Funiandes%5Fedu%5Fco%2FDocuments%2FDesarrollo%20de%20aplicaciones%20moviles%2Fvinyls%2Dapp%2Diteracion1%2Eapk&parent=%2Fpersonal%2Fk%5Fmaldonadod%5Funiandes%5Fedu%5Fco%2FDocuments%2FDesarrollo%20de%20aplicaciones%20moviles&ga=1)
 
 ## Instrucciones entrega
 
 En la wiki del repositorio, en la sección Sprint 1 encontraras los documentos de la entrega y el APK
 
-![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/059e4559-093f-45d3-8c44-0edcb583a059)
+![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/33d821e2-60e6-4479-b399-ff8ba584b554)

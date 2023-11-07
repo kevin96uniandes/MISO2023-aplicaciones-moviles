@@ -30,6 +30,18 @@ data class Album (
             )
         }
 
+        fun fromMap(map: Map<String, Any>): Album {
+            return Album(
+                albumId = 0,
+                name = map.get("name").toString(),
+                releaseDate = map.get("releaseDate").toString(),
+                genre = map.get("genre").toString(),
+                cover = map.get("cover").toString(),
+                recordLabel = map.get("recordLabel").toString(),
+                description = map.get("description").toString()
+            )
+        }
+
         fun fromJSONArray(jsonArray: JSONArray): List<Album> {
             val albumsArray = mutableListOf<Album>()
             var album: Album? = null

@@ -15,10 +15,21 @@ import kotlinx.coroutines.withContext
 
 class AlbumRepository (private val application: Application) {
 
-    suspend fun createAlbum(album: Map<String, Any>) {
-        AlbumServiceAdapter.getInstance(application).createAlbum(album)
-        val db = VinylDB.getDatabase(application.applicationContext)
-        db.albumDao().deleteAll()
+    suspend fun createAlbum(album: Map<String, Any>, isInternet: Boolean) {
+
+        Log.d("createAlbum", "createAlbum: ejecutando")
+        if (isInternet){
+           try {
+               AlbumServiceAdapter.getInstance(application).createAlbum(album)
+               guardarAlbumBD(album)
+           }catch(ex: Exception){
+               Log.e("createAlbum", "error a la hora de crear el album ${ex.printStackTrace()}" )
+               guardarAlbumBD(album)
+           }
+        }else{
+            Log.d("createAlbum", "createAlbum: ejecutando sin internet")
+            guardarAlbumBD(album)
+        }
     }
 
     suspend fun getAlbums(isInternet: Boolean): List<Album> {
@@ -45,7 +56,7 @@ class AlbumRepository (private val application: Application) {
         return albums
     }
 
-    suspend fun guardarAlbumBD(albums: List<Album>){
+    suspend fun guardarAlbumsBD(albums: List<Album>){
         val db = VinylDB.getDatabase(application.applicationContext)
 
         Log.d("guardado db", "ejecutando ")
@@ -54,6 +65,15 @@ class AlbumRepository (private val application: Application) {
             }
             Log.d("Count db", "${db.albumDao().countAlbums()}")
             Log.d("guardado db", "guardado ")
+    }
+
+    suspend fun guardarAlbumBD(albumMap: Map<String, Any>){
+        val db = VinylDB.getDatabase(application.applicationContext)
+
+        val createdAlbum = Album.fromMap(albumMap)
+        db.albumDao().insert(createdAlbum)
+
+        Log.d("guardado db individual", "guardado ")
     }
 
 
