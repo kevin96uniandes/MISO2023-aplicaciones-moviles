@@ -4,11 +4,13 @@ package com.uniandes.vinyls.ui.fragments
 import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
+import com.uniandes.vinyls.events.SingleLiveEvent
 import com.uniandes.vinyls.ui.fragments.CreateAlbumFragment
 import com.uniandes.vinyls.viewmodels.CreateAlbumViewModel
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions
@@ -27,27 +29,30 @@ class CreateAlbumFragmentTest {
     @BeforeEach
     fun setup() {
         createAlbumFragment = CreateAlbumFragment()
+
+        // Crea un SingleLiveEvent simulado.
+        val eventSuccessful = SingleLiveEvent<Boolean>()
+
+        // Configura el ViewModel simulado para devolver el SingleLiveEvent simulado
+        every { viewModel.eventSuccessful } returns eventSuccessful
+
         // Inyecta el ViewModel simulado en el fragmento.
         createAlbumFragment.viewModel = viewModel
     }
 
+
     @Test
     fun testViewModelEventObservation() {
-        val lifecycleOwner = mockk<LifecycleOwner>(relaxed = true)
+        val createAlbumFragment = CreateAlbumFragment()
+        createAlbumFragment.viewModel = viewModel
 
-        // Configura el ViewModel simulado para que responda como se esperaba.
-        coEvery { viewModel.eventSuccessful.observe(lifecycleOwner, any()) } just Runs
+        // Simula el comportamiento del LiveData del ViewModel.
+        coEvery { viewModel.eventSuccessful.observe(any(), any()) } just Runs
 
-        // Llama a onViewCreated con los parámetros simulados.
+        // Llama al método que se encarga de observar el LiveData.
         createAlbumFragment.onViewCreated(mockk(), mockk())
 
-        // Verifica que el ViewModel observe se haya llamado.
-        coVerify { viewModel.eventSuccessful.observe(lifecycleOwner, any()) }
-    }
-
-
-    @Test
-    fun addition_isCorrect() {
-        Assertions.assertEquals(4, 2 + 2)
+        // Verifica que la observación se haya realizado correctamente.
+        coVerify { viewModel.eventSuccessful.observe(any(), any()) }
     }
 }
