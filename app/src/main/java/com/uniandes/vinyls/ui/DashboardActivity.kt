@@ -1,7 +1,6 @@
 package com.uniandes.vinyls.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,9 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.uniandes.vinyls.R
-import com.uniandes.vinyls.ui.fragments.CreateAlbumFragment
 import com.uniandes.vinyls.ui.fragments.ListAlbumsFragment
-import com.uniandes.vinyls.ui.fragments.visitorHomeFragment
+import com.uniandes.vinyls.ui.fragments.VisitorHomeFragment
 
 class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer: DrawerLayout
@@ -71,7 +69,7 @@ class DashboardActivity : CrossIntentActivity(), NavigationView.OnNavigationItem
             R.id.nav_item_one -> goToHome()
             R.id.nav_item_two -> {
                 if (userType == "Visitante") {
-                    changeFragment(visitorHomeFragment.newInstance(), item.title.toString())
+                    changeFragment(VisitorHomeFragment.newInstance(), item.title.toString())
                 }else{
                     changeFragment(ListAlbumsFragment.newInstance(userType), item.title.toString())
                 }

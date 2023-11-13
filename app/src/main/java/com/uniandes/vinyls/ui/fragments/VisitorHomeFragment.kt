@@ -5,17 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import com.uniandes.vinyls.R
 
-class visitorHomeFragment : Fragment() {
+class VisitorHomeFragment : Fragment() {
 
     companion object {
-        fun newInstance() = visitorHomeFragment()
+        fun newInstance() = VisitorHomeFragment()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +29,18 @@ class visitorHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val gotoAlbums = view.findViewById<ImageView>(R.id.go_to_album)
+        val goToCollectors = view.findViewById<ImageView>(R.id.go_to_collectors)
 
         gotoAlbums.setOnClickListener {
             val transaction = this.activity?.supportFragmentManager?.beginTransaction()
             transaction?.replace(R.id.frame_layout, ListAlbumsFragment.newInstance("Visitante"))
+            transaction?.disallowAddToBackStack()
+            transaction?.commit()
+        }
+
+        goToCollectors.setOnClickListener {
+            val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, ListCollectorsFragment.newInstance())
             transaction?.disallowAddToBackStack()
             transaction?.commit()
         }
