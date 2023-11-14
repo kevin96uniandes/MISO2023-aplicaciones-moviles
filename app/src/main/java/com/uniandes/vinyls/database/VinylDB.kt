@@ -16,6 +16,7 @@ import com.uniandes.vinyls.models.Collector
 abstract class VinylDB : RoomDatabase() {
     abstract fun albumDao(): AlbumDAO
     abstract fun collectorDao(): CollectorDAO
+    abstract fun performerDao(): PerformerDAO
     companion object {
 
         @Volatile
