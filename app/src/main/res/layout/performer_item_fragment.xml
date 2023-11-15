@@ -3,7 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="Bullet Image"
+        android:src="@mipmap/icono_artista_foreground"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:id="@+id/performer_item_name"
