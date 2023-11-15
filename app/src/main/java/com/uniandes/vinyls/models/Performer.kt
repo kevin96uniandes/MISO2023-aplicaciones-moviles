@@ -12,10 +12,7 @@ data class Performer (
     val name: String,
     val image: String,
     val description: String,
-    val birthDate: String,
-    val creationDate: String,
-    val type: String,
-    var bandId: Int
+    val birthDate: String
 ) {
 
     companion object {
@@ -26,10 +23,7 @@ data class Performer (
                 name = map["name"].toString(),
                 image = map["image"].toString(),
                 description = map["description"].toString(),
-                birthDate = map["birthDate"].toString(),
-                creationDate = map["creationDate"].toString(),
-                type = map["type"].toString(),
-                bandId = 0
+                birthDate = map["birthDate"].toString()
             )
         }
 
@@ -39,10 +33,7 @@ data class Performer (
                 name = jsonObject.getString("name"),
                 image = jsonObject.getString("image"),
                 description = jsonObject.getString("description"),
-                birthDate = jsonObject.getString("birthDate"),
-                creationDate = jsonObject.getString("creationDate"),
-                type = jsonObject.getString("type"),
-                bandId = jsonObject.getInt("bandId")
+                birthDate = jsonObject.getString("birthDate")
             )
         }
 
