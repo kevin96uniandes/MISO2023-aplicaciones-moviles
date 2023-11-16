@@ -7,17 +7,17 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.uniandes.vinyls.models.Album
 import com.uniandes.vinyls.models.Track
-
+import com.uniandes.vinyls.models.Collector
 
 @Database(
-    entities = [Album::class, Track::class],
+    entities = [Album::class, Collector::class,Track::class],
     version = 1,
     exportSchema = false
 )
 @TypeConverters(DataConverter::class)
 abstract class VinylDB : RoomDatabase() {
     abstract fun albumDao(): AlbumDAO
-
+    abstract fun collectorDao(): CollectorDAO
     companion object {
 
         @Volatile
