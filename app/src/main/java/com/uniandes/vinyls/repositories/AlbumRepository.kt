@@ -56,6 +56,26 @@ class AlbumRepository (private val application: Application) {
         return albums
     }
 
+    suspend fun obtenerAlbumPorId(id: Int): Album{
+
+        var album: Album?
+        val isRunningTest = validarTest()
+        if (!isRunningTest){
+            val db = VinylDB.getDatabase(application.applicationContext)
+            album = db.albumDao().getAlbumById(id)
+            if(album != null){
+                return album
+            }else{
+                album = AlbumServiceAdapter.getInstance(application).getAlbumById(id)
+                return album
+
+            }
+        }else {
+            album = MockAlbumServiceAdapter.getInstance(application).getAlbumById(1)
+            return album
+        }
+    }
+
     suspend fun guardarAlbumsBD(albums: List<Album>){
         val db = VinylDB.getDatabase(application.applicationContext)
 

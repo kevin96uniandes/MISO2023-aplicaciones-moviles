@@ -54,4 +54,17 @@ class AlbumServiceAdapter(context: Context): NetworkServiceAdapter(context) {
         )
     }
 
+    suspend fun getAlbumById(id: Int) = suspendCoroutine<Album>{ continuation ->
+        requestQueue.add(
+            getRequest("/albums/${id}", { response ->
+                val resp = JSONObject(response)
+                val album = Album.fromJSONObject(resp)
+                continuation.resume(album)
+            },{
+                continuation.resumeWithException(it)
+                Log.e("error => ", it.toString())
+            })
+        )
+    }
+
 }
