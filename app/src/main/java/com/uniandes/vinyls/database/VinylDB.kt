@@ -8,9 +8,10 @@ import androidx.room.TypeConverters
 import com.uniandes.vinyls.models.Album
 import com.uniandes.vinyls.models.Track
 import com.uniandes.vinyls.models.Collector
+import com.uniandes.vinyls.models.Performer
 
 @Database(
-    entities = [Album::class, Collector::class,Track::class],
+    entities = [Album::class, Collector::class, Performer::class,Track::class],
     version = 1,
     exportSchema = false
 )
@@ -18,6 +19,7 @@ import com.uniandes.vinyls.models.Collector
 abstract class VinylDB : RoomDatabase() {
     abstract fun albumDao(): AlbumDAO
     abstract fun collectorDao(): CollectorDAO
+    abstract fun performerDao(): PerformerDAO
     companion object {
 
         @Volatile

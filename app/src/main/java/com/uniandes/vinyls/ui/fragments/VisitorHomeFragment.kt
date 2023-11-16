@@ -1,11 +1,11 @@
 package com.uniandes.vinyls.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.uniandes.vinyls.R
 
 class VisitorHomeFragment : Fragment() {
@@ -30,6 +30,7 @@ class VisitorHomeFragment : Fragment() {
 
         val gotoAlbums = view.findViewById<ImageView>(R.id.go_to_album)
         val goToCollectors = view.findViewById<ImageView>(R.id.go_to_collectors)
+        val goToPerformers = view.findViewById<ImageView>(R.id.go_to_performers)
 
         gotoAlbums.setOnClickListener {
             val transaction = this.activity?.supportFragmentManager?.beginTransaction()
@@ -41,6 +42,13 @@ class VisitorHomeFragment : Fragment() {
         goToCollectors.setOnClickListener {
             val transaction = this.activity?.supportFragmentManager?.beginTransaction()
             transaction?.replace(R.id.frame_layout, ListCollectorsFragment.newInstance())
+            transaction?.disallowAddToBackStack()
+            transaction?.commit()
+        }
+
+        goToPerformers.setOnClickListener {
+            val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, ListPerformersFragment.newInstance())
             transaction?.disallowAddToBackStack()
             transaction?.commit()
         }

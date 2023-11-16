@@ -17,6 +17,7 @@
     <string name="app_bar_collectors">Coleccionistas</string>
     <string name="menu_artists">Artistas</string>
     <string name="collectors">Coleccionistas</string>
+    <string name="performers">Artistas</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="list_albums_label">Listado de álbumes</string>
@@ -27,6 +28,7 @@
     <string name="main_label">Vinilos</string>
     <string name="visitor_label">Visitante</string>
     <string name="collector_label">Coleccionista</string>
+    <string name="performer_label">Artista</string>
     <string name="album_created_successful">Álbum creado exitosamente</string>
     <string name="error_creating_album">Error al crear álbum</string>
     <string name="error_required_field_and_not_empty">Campo requerido y no puede ser vacío</string>
@@ -37,6 +39,7 @@
     <string name="EDIT_TEXT_TYPE_TEXT">TEXT</string>
     <string name="title_fragment_create_album">Crear Álbum</string>
     <string name="filter_album">Buscar álbumes...</string>
+    <string name="app_bar_performers">Artistas</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_records_display">No hay información para mostrar</string>
