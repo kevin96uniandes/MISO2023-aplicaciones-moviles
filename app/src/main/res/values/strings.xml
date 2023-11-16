@@ -22,6 +22,7 @@
     <string name="order_name_label">Nombre</string>
     <string name="title_activity_list_albums">ListAlbumsActivity</string>
     <string name="add_album">Agregar álbum</string>
+    <string name="add_track">Agregar cancion</string>
     <string name="main_label">Vinilos</string>
     <string name="visitor_label">Visitante</string>
     <string name="collector_label">Coleccionista</string>
@@ -35,4 +36,6 @@
     <string name="EDIT_TEXT_TYPE_TEXT">TEXT</string>
     <string name="title_fragment_create_album">Crear Álbum</string>
     <string name="filter_album">Buscar álbumes...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

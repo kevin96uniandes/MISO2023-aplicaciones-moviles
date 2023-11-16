@@ -20,7 +20,7 @@ import com.uniandes.vinyls.adapter.AlbumAdapter
 import com.uniandes.vinyls.models.Album
 import com.uniandes.vinyls.viewmodels.ListAlbumsViewModel
 
-class ListAlbumsFragment : Fragment() {
+class ListAlbumsFragment : Fragment(), AlbumAdapter.OnItemClickListener {
 
     private var albums: List<Album> = emptyList()
     private var userType: String = "Coleccionista"
@@ -58,7 +58,7 @@ class ListAlbumsFragment : Fragment() {
             loadingProgressBar.visibility = View.VISIBLE
 
             this.albums = albums
-            val albumAdapter = AlbumAdapter(this.albums)
+            val albumAdapter = AlbumAdapter(this.albums, this)
 
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = albumAdapter
@@ -126,6 +126,21 @@ class ListAlbumsFragment : Fragment() {
             transaction?.disallowAddToBackStack()
             transaction?.commit()
         }
+    }
+
+    override fun onItemClick(position: Int) {
+        val idAlbum = albums[position].albumId
+
+        val bundle = Bundle()
+        bundle.putInt("idAlbum", idAlbum)
+
+        val detailAlbumFragment = DetailAlbumFragment()
+        detailAlbumFragment.arguments = bundle
+
+        val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.frame_layout, detailAlbumFragment)
+        transaction?.disallowAddToBackStack()
+        transaction?.commit()
     }
 
 }
