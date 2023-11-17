@@ -25,4 +25,6 @@ interface AlbumDAO {
     @Query("SELECT COUNT(*) FROM albums")
     fun countAlbums(): Int
 
+    @Query("SELECT * FROM albums WHERE albumId = :albumId")
+    fun getAlbumById(albumId: Int): Album?
 }

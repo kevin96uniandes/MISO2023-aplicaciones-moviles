@@ -132,6 +132,85 @@ class AlbumsTest {
     }
 
     @Test
+    fun goToDetailAlbumAsCollectors() {
+
+        Thread.sleep(8000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.btn_sign_in_as_collectors)).perform(
+            ViewActions.click()
+        )
+
+        Thread.sleep(5000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerViewAlbums))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
+
+        Thread.sleep(5000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.image_detail_cover)).check(
+            ViewAssertions.matches(ViewMatchers.isDisplayed())
+        )
+    }
+
+    @Test
+    fun goToDetailAlbumAsValidData() {
+
+        Thread.sleep(8000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.btn_sign_in_as_collectors)).perform(
+            ViewActions.click()
+        )
+
+        Thread.sleep(5000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerViewAlbums))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
+
+        Thread.sleep(5000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.image_detail_cover)).check(
+            ViewAssertions.matches(ViewMatchers.isDisplayed())
+        )
+
+        onView(ViewMatchers.withId(R.id.detail_album_genero))
+            .check(ViewAssertions.matches(ViewMatchers.withText("rock")))
+
+        onView(ViewMatchers.withId(R.id.detail_album_descripcion))
+            .check(ViewAssertions.matches(ViewMatchers.withText(
+                CoreMatchers.containsString("Welcome to the Jungle es una canción de hard rock de la banda estadounidense Guns N' Roses"))))
+
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerViewTracks))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, ViewActions.scrollTo()))
+            .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText("Symphony of destruction"))))
+    }
+
+    @Test
+    fun goToDetailAlbumByVisitor() {
+
+        Thread.sleep(8000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.btn_sign_in_as_visitors)).perform(
+            ViewActions.click()
+        )
+
+        Espresso.onView(ViewMatchers.withId(R.id.go_to_album)).perform(
+            ViewActions.click()
+        )
+
+        Thread.sleep(5000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerViewAlbums))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
+
+        Thread.sleep(5000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.image_detail_cover)).check(
+            ViewAssertions.matches(ViewMatchers.isDisplayed())
+        )
+
+    }
+
+    @Test
     fun goToCreateAlbum() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -297,7 +376,7 @@ class AlbumsTest {
         )
     }
 
-   @Test
+    @Test
     fun goToCreateAlbumSuccessfull() {
 
         Thread.sleep(8000L) // Espera por 5 segundos

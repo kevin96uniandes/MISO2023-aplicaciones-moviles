@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.models.Album
 
-class AlbumAdapter(private val albums: List<Album>) :
+class AlbumAdapter(private val albums: List<Album>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
@@ -26,7 +26,11 @@ class AlbumAdapter(private val albums: List<Album>) :
         holder.bind(album)
     }
 
-    inner class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener  {
+        init {
+            itemView.setOnClickListener(this)
+        }
+
         fun bind(album: Album) {
             itemView.findViewById<TextView>(R.id.album_name1).text = album.name
             itemView.findViewById<TextView>(R.id.album_genre1).text = album.genre
@@ -39,5 +43,16 @@ class AlbumAdapter(private val albums: List<Album>) :
                 .error(R.drawable.ic_broken_image)
                 .into(imageView)
         }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }
