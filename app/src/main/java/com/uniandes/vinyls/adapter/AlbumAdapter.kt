@@ -38,6 +38,8 @@ class AlbumAdapter(private val albums: List<Album>, private val listener: OnItem
             //Url imagen
             val imageView =  itemView.findViewById<ImageView>(R.id.album_cover1)
 
+
+
             Picasso.get()
                 .load(album.cover)
                 .error(R.drawable.ic_broken_image)
