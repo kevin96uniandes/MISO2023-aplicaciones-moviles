@@ -14,5 +14,4 @@
         android:textColor="@color/white"
         android:drawableStart="@mipmap/icono_artista_foreground"
         android:drawablePadding="10dp"/>
-
 </LinearLayout>

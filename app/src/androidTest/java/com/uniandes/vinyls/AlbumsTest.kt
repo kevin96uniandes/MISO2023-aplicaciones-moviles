@@ -448,7 +448,7 @@ class AlbumsTest {
             ViewActions.click()
         )
 
-       Thread.sleep(3000L) // Espera por 5 segundos
+       Thread.sleep(7000L) // Espera por 5 segundos
 
        Espresso.onView(ViewMatchers.withId(R.id.listado_albumes_title)).check(
             ViewAssertions.matches(ViewMatchers.isDisplayed())
