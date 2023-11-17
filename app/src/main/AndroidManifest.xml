@@ -17,11 +17,6 @@
         android:theme="@style/Theme.VinylsMobileDark"
         tools:targetApi="31">
         <activity
-            android:name=".ui.ListAlbumsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_list_albums"
-            android:theme="@style/Theme.VinylsMobileDark" />
-        <activity
             android:name=".ui.DashboardActivity"
             android:exported="false" />
         <activity

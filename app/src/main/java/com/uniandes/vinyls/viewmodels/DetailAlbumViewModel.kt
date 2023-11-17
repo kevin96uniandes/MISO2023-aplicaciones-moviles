@@ -18,8 +18,6 @@ class DetailAlbumViewModel (application: Application, albumId: Int) : AndroidVie
     private val albumRepository = AlbumRepository(application)
     private val id = albumId
     val _album = MutableLiveData<Album>()
-
-
     init {
         getAlbumById(id)
     }

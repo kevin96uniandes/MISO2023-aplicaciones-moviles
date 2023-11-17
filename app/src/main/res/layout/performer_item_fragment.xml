@@ -4,14 +4,6 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:contentDescription="Bullet Image"
-        android:src="@mipmap/icono_artista_foreground"
-        android:layout_marginRight="10dp"/>
-
     <TextView
         android:id="@+id/performer_item_name"
         android:layout_width="match_parent"
@@ -19,6 +11,8 @@
         android:text="Album Name"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:drawableStart="@mipmap/icono_artista_foreground"
+        android:drawablePadding="10dp"/>
 
 </LinearLayout>
