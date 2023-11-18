@@ -132,6 +132,7 @@ class AlbumsTest {
     }
 
     @Test
+<<<<<<< HEAD
     fun goToDetailAlbumAsCollectors() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -211,6 +212,8 @@ class AlbumsTest {
     }
 
     @Test
+=======
+>>>>>>> 40ae9c98d708e3780a965cc6105bad9bd4d4ecde
     fun goToCreateAlbum() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -376,7 +379,11 @@ class AlbumsTest {
         )
     }
 
+<<<<<<< HEAD
     @Test
+=======
+   @Test
+>>>>>>> 40ae9c98d708e3780a965cc6105bad9bd4d4ecde
     fun goToCreateAlbumSuccessfull() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -448,7 +455,11 @@ class AlbumsTest {
             ViewActions.click()
         )
 
+<<<<<<< HEAD
        Thread.sleep(7000L) // Espera por 5 segundos
+=======
+       Thread.sleep(3000L) // Espera por 5 segundos
+>>>>>>> 40ae9c98d708e3780a965cc6105bad9bd4d4ecde
 
        Espresso.onView(ViewMatchers.withId(R.id.listado_albumes_title)).check(
             ViewAssertions.matches(ViewMatchers.isDisplayed())
