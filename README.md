@@ -60,10 +60,10 @@ En el repositorio, en la seccion wiki se encuentra el archivo Vynils-Iteracion-1
 
 NOTA: A la hora de instalar el apk en tu celular, ese te mostrara multiples alertas por ser un APK externo, por favor aceptar todas
 
-[link del apk](https://uniandes-my.sharepoint.com/:u:/g/personal/k_maldonadod_uniandes_edu_co/EY9XObmrhFNNgwD-k1IrYnABpCm0eVFN2E9Oy9yGUJU9Zg?e=sTmCrv)
+[link del apk](https://uniandes-my.sharepoint.com/:u:/g/personal/lj_torresm1_uniandes_edu_co/ER7xuFVCCcVFkG0IsCuBz0cBOQ6f04c_D85Cvq5LVV0m3Q?e=fQ1azc)
 
 ## Instrucciones entrega
 
-En la wiki del repositorio, en la sección Sprint 1 encontraras los documentos de la entrega y el APK
+En la wiki del repositorio, en la sección Sprint 2 encontraras los documentos de la entrega y el APK
 
 ![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/33d821e2-60e6-4479-b399-ff8ba584b554)
