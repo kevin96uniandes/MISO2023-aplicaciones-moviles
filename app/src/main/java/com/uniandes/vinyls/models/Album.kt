@@ -4,6 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @Entity(tableName = "albums")
 data class Album (
@@ -14,11 +16,14 @@ data class Album (
     val releaseDate:String,
     val description:String,
     val genre:String,
-    val recordLabel:String
-) {
+    val recordLabel:String,
+    var tracks: List<Track> = mutableListOf<Track>()
+    ) {
+
+    constructor() : this(0, "", "", "", "", "", "")
 
     companion object {
-        private fun fromJSONObject(jsonObject: JSONObject): Album {
+        fun fromJSONObject(jsonObject: JSONObject): Album {
             return Album(
                 albumId = jsonObject.getInt("id"),
                 name = jsonObject.getString("name"),
@@ -26,7 +31,10 @@ data class Album (
                 genre = jsonObject.getString("genre"),
                 cover = jsonObject.getString("cover"),
                 recordLabel = jsonObject.getString("recordLabel"),
-                description = jsonObject.getString("description")
+                description = jsonObject.getString("description"),
+                tracks = Track.fromJSONArray(
+                    jsonObject.getJSONArray("tracks")
+                )
             )
         }
 
@@ -46,12 +54,26 @@ data class Album (
             val albumsArray = mutableListOf<Album>()
             var album: Album? = null
             for (i in 0 until jsonArray.length()) {
-                album = Album.fromJSONObject(jsonArray.getJSONObject(i))
+                album = fromJSONObject(jsonArray.getJSONObject(i))
                 albumsArray.add(
                     album
                 )
             }
             return albumsArray
         }
+
+    }
+
+    fun formatDateReelaseDate(): String {
+        val formatoEntrada = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        val formatoSalida = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+        try {
+            val fecha = formatoEntrada.parse(this.releaseDate)
+            return formatoSalida.format(fecha)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return ""
     }
 }

@@ -21,7 +21,7 @@ class AlbumRepository (private val application: Application) {
         if (isInternet){
            try {
                AlbumServiceAdapter.getInstance(application).createAlbum(album)
-               guardarAlbumBD(album)
+               delleteAllAlbum()
            }catch(ex: Exception){
                Log.e("createAlbum", "error a la hora de crear el album ${ex.printStackTrace()}" )
                guardarAlbumBD(album)
@@ -34,26 +34,46 @@ class AlbumRepository (private val application: Application) {
 
     suspend fun getAlbums(isInternet: Boolean): List<Album> {
         var albums: List<Album>
+
         val db = VinylDB.getDatabase(application.applicationContext)
         val isRunningTest = validarTest()
         if (!isRunningTest){
-            if (isInternet){
-                try {
-                    albums = AlbumServiceAdapter.getInstance(application).getAlbums()
+            albums = db.albumDao().getAlbums()
+            try {
+                    if (albums.isNullOrEmpty()){
+                        if (isInternet) {
+                            albums = AlbumServiceAdapter.getInstance(application).getAlbums()
+                            Log.d("lista albums consumidos", albums.toString())
+                        }
+                    }
                 }catch(ex: Exception){
                     Log.e("Error", "Ha ocurrido una excepción: ${ex.message} ${ex.localizedMessage} ${ex.printStackTrace()}")
-                    albums = db.albumDao().getAlbums()
                 }
-
-            }else{
-                albums = db.albumDao().getAlbums()
-            }
         }else{
             albums = MockAlbumServiceAdapter.getInstance(application).getAlbumsMocks()
         }
-
         Log.d("lista albums", albums.toString())
         return albums
+    }
+
+    suspend fun obtenerAlbumPorId(id: Int): Album{
+
+        var album: Album?
+        val isRunningTest = validarTest()
+        if (!isRunningTest){
+            val db = VinylDB.getDatabase(application.applicationContext)
+            album = db.albumDao().getAlbumById(id)
+            if(album != null){
+                return album
+            }else{
+                album = AlbumServiceAdapter.getInstance(application).getAlbumById(id)
+                return album
+
+            }
+        }else {
+            album = MockAlbumServiceAdapter.getInstance(application).getAlbumById(1)
+            return album
+        }
     }
 
     suspend fun guardarAlbumsBD(albums: List<Album>){
@@ -65,6 +85,11 @@ class AlbumRepository (private val application: Application) {
             }
             Log.d("Count db", "${db.albumDao().countAlbums()}")
             Log.d("guardado db", "guardado ")
+    }
+
+    suspend fun delleteAllAlbum(){
+        val db = VinylDB.getDatabase(application.applicationContext)
+        db.albumDao().deleteAll()
     }
 
     suspend fun guardarAlbumBD(albumMap: Map<String, Any>){

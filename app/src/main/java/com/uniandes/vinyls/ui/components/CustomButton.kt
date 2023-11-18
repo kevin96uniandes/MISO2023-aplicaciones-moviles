@@ -13,6 +13,7 @@ import com.uniandes.vinyls.R
 
 class CustomButton : androidx.appcompat.widget.AppCompatButton {
 
+    private var bounds = Rect()
     private val paint = Paint()
     private val rect = RectF()
     private val path = Path()
@@ -50,7 +51,7 @@ class CustomButton : androidx.appcompat.widget.AppCompatButton {
 
         canvas.drawPath(path, paint)
         // Calcula la posición para centrar el texto
-        val bounds = Rect()
+        bounds.setEmpty()  // Restablece los valores a un rectángulo vacío.
         paint.getTextBounds(customText, 0, customText.length, bounds)
         val x = (width - bounds.width()) / 2f
         val y = height / 2f - (bounds.top + bounds.bottom) / 2f
