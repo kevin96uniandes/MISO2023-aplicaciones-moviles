@@ -132,7 +132,6 @@ class AlbumsTest {
     }
 
     @Test
-<<<<<<< HEAD
     fun goToDetailAlbumAsCollectors() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -212,8 +211,6 @@ class AlbumsTest {
     }
 
     @Test
-=======
->>>>>>> 40ae9c98d708e3780a965cc6105bad9bd4d4ecde
     fun goToCreateAlbum() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -379,11 +376,7 @@ class AlbumsTest {
         )
     }
 
-<<<<<<< HEAD
     @Test
-=======
-   @Test
->>>>>>> 40ae9c98d708e3780a965cc6105bad9bd4d4ecde
     fun goToCreateAlbumSuccessfull() {
 
         Thread.sleep(8000L) // Espera por 5 segundos
@@ -394,9 +387,9 @@ class AlbumsTest {
 
         Thread.sleep(5000L) // Espera por 5 segundos
 
-       Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
-           ViewActions.click()
-       )
+        Espresso.onView(ViewMatchers.withId(R.id.add_album)).perform(
+            ViewActions.click()
+        )
 
         val calendar = Calendar.getInstance()
 
@@ -404,64 +397,60 @@ class AlbumsTest {
         val month = calendar.get(Calendar.MONTH) +1
         val day = calendar.get(Calendar.DAY_OF_MONTH) - 1
 
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_name))
-           .perform(ViewActions.scrollTo())
-           .perform(ViewActions.typeText("Nombre prueba"));
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_name))
+            .perform(ViewActions.scrollTo())
+            .perform(ViewActions.typeText("Nombre prueba"));
 
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_musical_genre)).perform(
-           ViewActions.click()
-       );
-
-       onView(ViewMatchers.withText("Rock")).inRoot(RootMatchers.isPlatformPopup()).perform(
-           ViewActions.click())
-
-       Thread.sleep(2000L) // Espera por 5 segundos
-
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_release_date)).perform(
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_musical_genre)).perform(
             ViewActions.click()
-       )
+        );
 
-       Espresso.onView(ViewMatchers.withClassName(Matchers.equalTo(DatePicker::class.java.name)))
-            .perform(PickerActions.setDate(year, month, day))
+        onView(ViewMatchers.withText("Rock")).inRoot(RootMatchers.isPlatformPopup()).perform(
+            ViewActions.click())
 
-       Espresso.onView(ViewMatchers.withText("OK")).perform(ViewActions.click());
+        Thread.sleep(2000L) // Espera por 5 segundos
 
-       Thread.sleep(2000L) // Espera por 5 segundos
-
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_spinner_record_label)).perform(
-           ViewActions.click()
-       );
-
-       onView(ViewMatchers.withText("EMI")).inRoot(RootMatchers.isPlatformPopup()).perform(
-           ViewActions.click())
-
-       Thread.sleep(2000L) // Espera por 5 segundos
-
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_cover_image))
-           .perform(ViewActions.scrollTo())
-           .perform(ViewActions.typeText("https://www.youtube.com"));
-
-       Thread.sleep(2000L) // Espera por 5 segundos
-
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_review))
-           .perform(ViewActions.scrollTo())
-           .perform(ViewActions.typeText("REVIEW DE PRUEBA"));
-
-       Thread.sleep(2000L) // Espera por 5 segundos
-
-       Espresso.onView(ViewMatchers.withId(R.id.create_album_btn_save)).perform(
-            ViewActions.scrollTo()
-       ).perform(
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_release_date)).perform(
             ViewActions.click()
         )
 
-<<<<<<< HEAD
-       Thread.sleep(7000L) // Espera por 5 segundos
-=======
-       Thread.sleep(3000L) // Espera por 5 segundos
->>>>>>> 40ae9c98d708e3780a965cc6105bad9bd4d4ecde
+        Espresso.onView(ViewMatchers.withClassName(Matchers.equalTo(DatePicker::class.java.name)))
+            .perform(PickerActions.setDate(year, month, day))
 
-       Espresso.onView(ViewMatchers.withId(R.id.listado_albumes_title)).check(
+        Espresso.onView(ViewMatchers.withText("OK")).perform(ViewActions.click());
+
+        Thread.sleep(2000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_spinner_record_label)).perform(
+            ViewActions.click()
+        );
+
+        onView(ViewMatchers.withText("EMI")).inRoot(RootMatchers.isPlatformPopup()).perform(
+            ViewActions.click())
+
+        Thread.sleep(2000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_cover_image))
+            .perform(ViewActions.scrollTo())
+            .perform(ViewActions.typeText("https://www.youtube.com"));
+
+        Thread.sleep(2000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_review))
+            .perform(ViewActions.scrollTo())
+            .perform(ViewActions.typeText("REVIEW DE PRUEBA"));
+
+        Thread.sleep(2000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.create_album_btn_save)).perform(
+            ViewActions.scrollTo()
+        ).perform(
+            ViewActions.click()
+        )
+
+        Thread.sleep(7000L) // Espera por 5 segundos
+
+        Espresso.onView(ViewMatchers.withId(R.id.listado_albumes_title)).check(
             ViewAssertions.matches(ViewMatchers.isDisplayed())
         )
     }
