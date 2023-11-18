@@ -12,6 +12,6 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:drawableStart="@mipmap/icono_artista_foreground"
+        android:drawableStart="@drawable/music_24"
         android:drawablePadding="10dp"/>
 </LinearLayout>
