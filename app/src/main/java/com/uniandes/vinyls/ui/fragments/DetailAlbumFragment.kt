@@ -82,6 +82,11 @@ class DetailAlbumFragment : Fragment() {
         recyclerView.adapter = tracksAdapter
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.title = activity?.getText(R.string.detalle_albums).toString()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     fun insertarImagen(urlCover: String, imagenCover: ImageView){
         Picasso.get()
             .load(urlCover)

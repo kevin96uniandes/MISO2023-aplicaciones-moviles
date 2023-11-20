@@ -15,17 +15,16 @@ class CollectorRepository(private val application: Application) {
         val db = VinylDB.getDatabase(application.applicationContext)
         val isRunningTest = validarTest()
         if (!isRunningTest) {
-            if(hasConnectivity) {
-                try{
-                    collectors = CollectorServiceAdapter.getInstance(application).findAll()
-                }catch (ex: Exception){
-                    Log.e("Error", "getting data collectors")
-                    collectors = db.collectorDao().findAll()
+            collectors = db.collectorDao().findAll()
+            if(collectors.isNullOrEmpty()){
+                if(hasConnectivity) {
+                    try{
+                        collectors = CollectorServiceAdapter.getInstance(application).findAll()
+                    }catch (ex: Exception){
+                        Log.e("Error", "getting data collectors")
+                    }
                 }
-            } else {
-                collectors = db.collectorDao().findAll()
             }
-
         }else {
             collectors = MockCollectorServiceAdapter.getInstance(application).findAll()
         }

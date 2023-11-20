@@ -13,17 +13,16 @@ class PerformerRepository(private val application: Application) {
         val db = VinylDB.getDatabase(application.applicationContext)
         val isRunningTest = validarTest()
         if (!isRunningTest) {
-            if(hasConnectivity) {
-                try{
-                    performers = PerformerServiceAdapter.getInstance(application).findAll()
-                }catch (ex: Exception){
-                    Log.e("Error", "getting data performers")
-                    performers = db.performerDao().findAll()
+            performers = db.performerDao().findAll()
+            if(performers.isNullOrEmpty()){
+                if(hasConnectivity) {
+                    try{
+                        performers = PerformerServiceAdapter.getInstance(application).findAll()
+                    }catch (ex: Exception){
+                        Log.e("Error", "getting data performers")
+                    }
                 }
-            } else {
-                performers = db.performerDao().findAll()
             }
-
         }else {
             performers = MockPerformerServiceAdapter.getInstance(application).findAll()
         }
