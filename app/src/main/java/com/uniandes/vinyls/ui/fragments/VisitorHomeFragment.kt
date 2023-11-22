@@ -43,19 +43,5 @@ class VisitorHomeFragment : Fragment() {
             transaction?.disallowAddToBackStack()
             transaction?.commit()
         }
-
-        goToCollectors.setOnClickListener {
-            val transaction = this.activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame_layout, ListCollectorsFragment.newInstance())
-            transaction?.disallowAddToBackStack()
-            transaction?.commit()
-        }
-
-        goToPerformers.setOnClickListener {
-            val transaction = this.activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame_layout, ListPerformersFragment.newInstance())
-            transaction?.disallowAddToBackStack()
-            transaction?.commit()
-        }
     }
 }
