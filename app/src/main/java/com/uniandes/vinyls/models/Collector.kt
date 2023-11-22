@@ -1,5 +1,7 @@
 package com.uniandes.vinyls.models
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.json.JSONArray
@@ -12,9 +14,27 @@ data class Collector (
     val telephone: String,
     val email: String,
     var createdAt: Long = System.currentTimeMillis()
-) {
+): Parcelable {
+
+    constructor(parcel: Parcel) : this(
+        collectorId = parcel.readInt(),
+        name = parcel.readString() ?: "",
+        telephone = parcel.readString() ?: "",
+        email = parcel.readString() ?: ""
+    )
 
     companion object {
+
+        @JvmField
+        val CREATOR: Parcelable.Creator<Collector> = object : Parcelable.Creator<Collector> {
+            override fun createFromParcel(parcel: Parcel): Collector {
+                return Collector(parcel)
+            }
+
+            override fun newArray(size: Int): Array<Collector?> {
+                return arrayOfNulls(size)
+            }
+        }
 
         fun fromMap(map: Map<String, Any>): Collector {
             return Collector(
@@ -45,5 +65,16 @@ data class Collector (
             }
             return collectorArray
         }
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(parcel: Parcel, p1: Int) {
+        parcel.writeInt(collectorId)
+        parcel.writeString(name)
+        parcel.writeString(telephone)
+        parcel.writeString(email)
     }
 }

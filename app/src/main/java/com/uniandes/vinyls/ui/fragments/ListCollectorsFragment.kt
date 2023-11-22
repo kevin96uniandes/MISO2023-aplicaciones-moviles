@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.adapter.CollectorAdapter
 import com.uniandes.vinyls.models.Collector
-import com.uniandes.vinyls.viewmodels.ListAlbumsViewModel
 import com.uniandes.vinyls.viewmodels.ListCollectorsViewModel
 import org.w3c.dom.Text
 
@@ -27,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ListCollectorsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListCollectorsFragment : Fragment() {
+class ListCollectorsFragment : Fragment(), CollectorAdapter.OnItemClickListener {
     private lateinit var viewModel: ListCollectorsViewModel
     private var collectors: List<Collector> = listOf()
     private lateinit var loadingProgressBar: ProgressBar
@@ -67,7 +66,7 @@ class ListCollectorsFragment : Fragment() {
                 loadingProgressBar.visibility = View.VISIBLE
 
                 this.collectors = collectors
-                val collectorAdapter = CollectorAdapter(this.collectors)
+                val collectorAdapter = CollectorAdapter(this.collectors, this)
 
                 recyclerView.layoutManager = LinearLayoutManager(requireContext())
                 recyclerView.adapter = collectorAdapter
@@ -107,5 +106,20 @@ class ListCollectorsFragment : Fragment() {
         @JvmStatic
         fun newInstance() =
             ListCollectorsFragment()
+    }
+
+    override fun onItemClick(position: Int) {
+        val collector = collectors[position]
+
+        val bundle = Bundle()
+        bundle.putParcelable("collector", collector)
+
+        val detailCollectorFragment = DetailCollectorFragment()
+        detailCollectorFragment.arguments = bundle
+
+        val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.frame_layout, detailCollectorFragment)
+        transaction?.disallowAddToBackStack()
+        transaction?.commit()
     }
 }
