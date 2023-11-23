@@ -35,4 +35,6 @@
     <string name="app_bar_performers">Artistas</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="no_records_display">No hay información para mostrar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
