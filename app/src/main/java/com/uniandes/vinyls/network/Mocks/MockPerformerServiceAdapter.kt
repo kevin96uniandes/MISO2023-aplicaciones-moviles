@@ -19,4 +19,16 @@ class MockPerformerServiceAdapter (context: Context) : NetworkServiceAdapter(con
     fun findAll() : List<Performer> {
         return listOf()
     }
+
+    suspend fun getPerformerById(id: Int): Performer {
+
+        var performer: Performer = Performer(1,
+            "Adele",
+            "https://albumart.publicradio.org/mb/78/7822977a-984d-358d-823f-426139c0eaba_a4bc.jpg",
+            "Adele Laurie Blue Adkins, conocida simplemente como Adele, es una cantautora y multinstrumentista británica.",
+            "2023-03-11T00:00:00.000Z"
+        )
+
+        return performer
+    }
 }

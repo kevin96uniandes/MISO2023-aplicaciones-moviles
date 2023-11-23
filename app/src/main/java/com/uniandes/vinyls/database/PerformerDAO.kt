@@ -15,4 +15,7 @@ interface PerformerDAO {
 
     @Query("SELECT COUNT(*) FROM performers")
     fun countPerformers(): Int
+
+    @Query("SELECT * FROM performers WHERE performerId = :performerId")
+    fun getPerformerById(performerId: Int): Performer?
 }
