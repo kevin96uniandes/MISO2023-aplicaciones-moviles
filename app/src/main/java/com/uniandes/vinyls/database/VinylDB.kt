@@ -18,6 +18,7 @@ import com.uniandes.vinyls.models.Performer
 @TypeConverters(DataConverter::class)
 abstract class VinylDB : RoomDatabase() {
     abstract fun albumDao(): AlbumDAO
+    abstract fun trackDao(): TracksDAO
     abstract fun collectorDao(): CollectorDAO
     abstract fun performerDao(): PerformerDAO
     companion object {

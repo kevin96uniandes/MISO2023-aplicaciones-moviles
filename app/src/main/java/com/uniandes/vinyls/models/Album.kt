@@ -61,7 +61,6 @@ data class Album (
             }
             return albumsArray
         }
-
     }
 
     fun formatDateReelaseDate(): String {
@@ -75,5 +74,12 @@ data class Album (
             e.printStackTrace()
         }
         return ""
+    }
+
+    fun addTrack(track: Track){
+        if (this.tracks.isEmpty()){
+            this.tracks = emptyList()
+        }
+        this.tracks += track
     }
 }

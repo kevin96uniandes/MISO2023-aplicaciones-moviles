@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CreateAlbumFragment"
+    >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name" />
+
+            <com.uniandes.vinyls.ui.components.CustomEditText
+                android:id="@+id/asociate_track_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:maxLength="100"
+                android:hint="@string/write_your_name"
+                app:type="@string/EDIT_TEXT_TYPE_TEXT"/>
+            <TextView
+                android:id="@+id/error_message_name_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/asociate_track_name"
+                android:layout_below="@+id/asociate_track_name"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duracion" />
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/asociate_track_duracion"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:maxLength="5"
+                style="@style/MaskTimeTrack"
+                app:mask="##:##"
+                android:hint="@string/write_your_duration"
+                android:inputType="time"
+                app:type="@string/EDIT_TEXT_TYPE_TEXT"/>
+
+            <TextView
+                android:id="@+id/error_message_time_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/asociate_track_duracion"
+                android:layout_below="@+id/asociate_track_duracion"
+                style="@style/ErrorTextView"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <com.uniandes.vinyls.ui.components.CustomButton
+                android:id="@+id/asociate_track_btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
