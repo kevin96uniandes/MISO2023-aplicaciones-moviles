@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.models.Collector
 
-class CollectorAdapter(private val collectors: List<Collector>) :
+class CollectorAdapter(private val collectors: List<Collector>, private val listener: OnItemClickListener) :
         RecyclerView.Adapter<CollectorAdapter.CollectorsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectorsViewHolder {
@@ -23,11 +23,26 @@ class CollectorAdapter(private val collectors: List<Collector>) :
         holder.bind(collector)
     }
 
-    inner class CollectorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CollectorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bind(collector: Collector) {
             itemView.findViewById<TextView>(R.id.collector_item_name).text = collector.name
 
         }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }

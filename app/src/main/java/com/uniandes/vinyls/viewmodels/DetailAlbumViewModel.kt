@@ -41,5 +41,4 @@ class DetailAlbumViewModel (application: Application, albumId: Int) : AndroidVie
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
-
 }
