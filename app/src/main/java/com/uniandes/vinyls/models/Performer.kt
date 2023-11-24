@@ -15,6 +15,8 @@ data class Performer (
     val birthDate: String
 ) {
 
+    constructor() : this(0, "", "", "", "")
+
     companion object {
 
         fun fromMap(map: Map<String, Any>): Performer {
@@ -27,7 +29,7 @@ data class Performer (
             )
         }
 
-        private fun fromJSONObject(jsonObject: JSONObject): Performer{
+        fun fromJSONObject(jsonObject: JSONObject): Performer{
             return Performer(
                 performerId = jsonObject.getInt("id"),
                 name = jsonObject.getString("name"),
