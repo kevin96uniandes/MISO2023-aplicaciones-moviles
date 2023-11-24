@@ -30,8 +30,8 @@ class PerformerAdapter(private val performers: List<Performer>, private val list
 
         fun bind(performer: Performer) {
             itemView.findViewById<TextView>(R.id.performer_item_name).text = performer.name
-
         }
+
         override fun onClick(p0: View?) {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {

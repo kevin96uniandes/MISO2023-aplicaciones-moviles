@@ -16,6 +16,7 @@ data class Performer (
 ) {
 
     constructor() : this(0, "", "", "", "")
+
     companion object {
 
         fun fromMap(map: Map<String, Any>): Performer {

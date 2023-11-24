@@ -12,6 +12,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_albums">Álbumes</string>
     <string name="detalle_albums">Detalle Album</string>
+    <string name="detalle_performers">Detalle Artistas</string>
     <string name="app_bar_collectors">Coleccionistas</string>
     <string name="menu_artists">Artistas</string>
     <string name="navigation_drawer_open">Open</string>
