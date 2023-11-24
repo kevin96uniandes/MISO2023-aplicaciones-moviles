@@ -30,5 +30,13 @@ data class Track(
             }
             return tracksArray
         }
+
+        fun fromMap(map: Map<String, Any>): Track {
+            return Track(
+                id = 0,
+                name = map.get("name").toString(),
+                duration = map.get("duration").toString()
+            )
+        }
     }
 }

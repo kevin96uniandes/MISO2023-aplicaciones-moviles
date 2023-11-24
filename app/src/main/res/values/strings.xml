@@ -3,7 +3,9 @@
     <string name="dd_mm_aaaa">DD-MM-AAAA</string>
     <string name="musical_genre">Género</string>
     <string name="release_date">Fecha de lanzamiento:</string>
+    <string name="duracion">Duración:</string>
     <string name="write_your_name">Escribe tu nombre</string>
+    <string name="write_your_duration">Escribe la duracion</string>
     <string name="name">Nombre:</string>
     <string name="cover_image">Url del cover</string>
     <string name="album_review">Reseña del álbum</string>
@@ -24,14 +26,18 @@
     <string name="visitor_label">Visitante</string>
     <string name="collector_label">Coleccionista</string>
     <string name="album_created_successful">Álbum creado exitosamente</string>
+    <string name="track_created_successful">Track creado exitosamente</string>
     <string name="error_creating_album">Error al crear álbum</string>
+    <string name="error_creating_track">Error al crear track</string>
     <string name="error_required_field_and_not_empty">Campo requerido y no puede ser vacío</string>
     <string name="error_spinner_required">Campo requerido y debe seleccionar un elemento</string>
     <string name="error_malformed_url">Formato incorrecto. Ej: https://mi-dominio.com</string>
+    <string name="error_longitd_duracion">La longitud de la duración no puede ser menor a cuatro</string>
     <string name="error_date_before">La fecha seleccionada no puede ser mayor a la fecha actual</string>
     <string name="EDIT_TEXT_TYPE_URL">URL</string>
     <string name="EDIT_TEXT_TYPE_TEXT">TEXT</string>
     <string name="title_fragment_create_album">Crear Álbum</string>
+    <string name="title_fragment_asociar_track">Asociar Track</string>
     <string name="filter_album">Buscar álbumes...</string>
     <string name="app_bar_performers">Artistas</string>
     <!-- TODO: Remove or change this placeholder text -->
