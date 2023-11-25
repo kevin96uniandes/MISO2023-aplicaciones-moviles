@@ -5,13 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.uniandes.vinyls.database.converters.DataConverter
 import com.uniandes.vinyls.models.Album
 import com.uniandes.vinyls.models.Track
 import com.uniandes.vinyls.models.Collector
+import com.uniandes.vinyls.models.CollectorAlbum
 import com.uniandes.vinyls.models.Performer
 
 @Database(
-    entities = [Album::class, Collector::class, Performer::class,Track::class],
+    entities = [Album::class, Collector::class, Performer::class,Track::class, CollectorAlbum::class],
     version = 1,
     exportSchema = false
 )

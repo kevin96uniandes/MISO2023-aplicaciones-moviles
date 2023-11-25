@@ -15,6 +15,4 @@ class EstadoServicios {
 
             return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
     }
-
-
 }

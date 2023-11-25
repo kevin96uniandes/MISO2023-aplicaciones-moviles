@@ -2,6 +2,7 @@ package com.uniandes.vinyls.repositories
 
 import android.app.Application
 import android.util.Log
+import com.uniandes.vinyls.NoInternetException
 import com.uniandes.vinyls.database.VinylDB
 import com.uniandes.vinyls.models.Collector
 import com.uniandes.vinyls.network.CollectorServiceAdapter
@@ -33,6 +34,23 @@ class CollectorRepository(private val application: Application) {
         return collectors
     }
 
+    suspend fun findById(collectorId: Int): Collector {
+        val db = VinylDB.getDatabase(application.applicationContext)
+        val isRunningTest = validarTest()
+        val collector = if (!isRunningTest) {
+            val dbCollector = db.collectorDao().findById(collectorId)
+            dbCollector?.let {
+                dbCollector
+            } ?: kotlin.run {
+                onlineFindId(collectorId)
+            }
+        }else {
+            MockCollectorServiceAdapter.getInstance(application).findById()
+        }
+        Log.d("Collectors", collector.toString())
+        return collector
+    }
+
         fun validarTest(): Boolean {
 
         val isRunningTest : Boolean by lazy {
@@ -56,5 +74,14 @@ class CollectorRepository(private val application: Application) {
         }
         Log.d("Count db", "${db.collectorDao().countCollectors()}")
         Log.d("guardado db", "guardado ")
+    }
+
+    private suspend fun onlineFindId(collectorId: Int): Collector {
+        return try{
+            CollectorServiceAdapter.getInstance(application).findById(collectorId)
+        }catch (ex: Exception){
+            Log.e("Error", "No connectivity for obtain collector")
+            throw NoInternetException("No hay conexión a internet")
+        }
     }
 }
