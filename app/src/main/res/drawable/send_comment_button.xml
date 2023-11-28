@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- res/drawable/rounded_image_button.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Fondo redondeado -->
+<item>
+    <shape android:shape="rectangle">
+        <corners android:radius="10dp" />
+        <solid android:color="@color/vinyls_yellow"/>
+    </shape>
+</item>
+<!-- Imagen centrada
+<item android:drawable="@drawable/paper_plane_solid"
+    android:gravity="center"
+    android:width="45dp"
+    android:height="45dp"
+    android:scaleType="fitCenter"
+    android:adjustViewBounds="true"/>
+    -->
+</layer-list>
