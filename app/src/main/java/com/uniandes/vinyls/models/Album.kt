@@ -76,4 +76,24 @@ data class Album (
         }
         return ""
     }
+
+    fun formatDateReelaseDate(): String {
+        val formatoEntrada = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        val formatoSalida = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+        try {
+            val fecha = formatoEntrada.parse(this.releaseDate)
+            return formatoSalida.format(fecha)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return ""
+    }
+
+    fun addTrack(track: Track){
+        if (this.tracks.isEmpty()){
+            this.tracks = emptyList()
+        }
+        this.tracks += track
+    }
 }
