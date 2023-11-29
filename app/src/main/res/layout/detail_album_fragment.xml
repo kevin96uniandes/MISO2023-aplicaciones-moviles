@@ -121,7 +121,7 @@
             android:paddingTop="10dp"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/add_album"
+                android:id="@+id/add_track"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="15dp"

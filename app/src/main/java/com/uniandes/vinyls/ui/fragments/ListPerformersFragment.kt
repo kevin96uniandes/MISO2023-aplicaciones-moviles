@@ -18,7 +18,7 @@ import com.uniandes.vinyls.viewmodels.ListPerformersViewModel
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class ListPerformersFragment : Fragment() {
+class ListPerformersFragment : Fragment(), PerformerAdapter.OnItemClickListener {
     private lateinit var viewModel: ListPerformersViewModel
     private var performers: List<Performer> = listOf()
     private lateinit var loadingProgressBar: ProgressBar
@@ -56,7 +56,7 @@ class ListPerformersFragment : Fragment() {
                 loadingProgressBar.visibility = View.VISIBLE
 
                 this.performers = performers
-                val performerAdapter = PerformerAdapter(this.performers)
+                val performerAdapter = PerformerAdapter(this.performers, this)
 
                 recyclerView.layoutManager = LinearLayoutManager(requireContext())
                 recyclerView.adapter = performerAdapter
@@ -95,5 +95,20 @@ class ListPerformersFragment : Fragment() {
         @JvmStatic
         fun newInstance() =
             ListPerformersFragment()
+    }
+
+    override fun onItemClick(position: Int) {
+        val idPerformer = performers[position].performerId
+
+        val bundle = Bundle()
+        bundle.putInt("idPerformer", idPerformer)
+
+        val detailPerformerFragment = DetailPerformerFragment()
+        detailPerformerFragment.arguments = bundle
+
+        val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.frame_layout, detailPerformerFragment)
+        transaction?.disallowAddToBackStack()
+        transaction?.commit()
     }
 }
