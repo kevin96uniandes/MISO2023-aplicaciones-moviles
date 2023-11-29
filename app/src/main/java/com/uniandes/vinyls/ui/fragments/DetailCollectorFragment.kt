@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uniandes.vinyls.NoInternetException
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.adapter.CollectorAlbumAdapter
-import com.uniandes.vinyls.adapter.CollectorArtistAdapter
+import com.uniandes.vinyls.adapter.CollectorPerformerAdapter
 import com.uniandes.vinyls.models.Collector
 import com.uniandes.vinyls.models.CollectorAlbum
-import com.uniandes.vinyls.models.CollectorArtist
+import com.uniandes.vinyls.models.CollectorPerformer
 import com.uniandes.vinyls.ui.components.CustomTextView
 import com.uniandes.vinyls.utils.EstadoServicios
 import com.uniandes.vinyls.viewmodels.CollectorAlbumViewModel
-import com.uniandes.vinyls.viewmodels.CollectorArtistViewModel
+import com.uniandes.vinyls.viewmodels.CollectorPerformerViewModel
 import com.uniandes.vinyls.viewmodels.CollectorViewModel
 
 /**
@@ -30,21 +30,21 @@ import com.uniandes.vinyls.viewmodels.CollectorViewModel
  * Use the [DetailCollectorFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DetailCollectorFragment : Fragment() {
+class DetailCollectorFragment : Fragment(), CollectorAlbumAdapter.OnItemClickListener {
     // TODO: Rename and change types of parameters
     private lateinit var twName: TextView
     private lateinit var twEmail: CustomTextView
     private lateinit var twPhone: TextView
     private lateinit var tvNoAlbumsRecords: TextView
-    private lateinit var tvNoArtistsRecords: TextView
+    private lateinit var tvNoPerformersRecords: TextView
     private var albums: List<CollectorAlbum> = listOf()
-    private var artists: List<CollectorArtist> = listOf()
+    private var performers: List<CollectorPerformer> = listOf()
     private lateinit var loadingAlbumsProgressBar: ProgressBar
-    private lateinit var loadingArtistsProgressBar: ProgressBar
+    private lateinit var loadingPerformersProgressBar: ProgressBar
     private var param2: String? = null
     private lateinit var viewModelCollector: CollectorViewModel
     private lateinit var viewModelCollectorAlbum: CollectorAlbumViewModel
-    private lateinit var viewModelCollectorArtist: CollectorArtistViewModel
+    private lateinit var viewModelCollectorPerformer: CollectorPerformerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,9 +64,9 @@ class DetailCollectorFragment : Fragment() {
         twEmail = view.findViewById(R.id.detail_collector_email)
         twPhone = view.findViewById(R.id.detail_collector_phone)
         tvNoAlbumsRecords = view.findViewById(R.id.emptyDataAlbumsTextView)
-        tvNoArtistsRecords = view.findViewById(R.id.emptyDataArtistsTextView)
+        tvNoPerformersRecords = view.findViewById(R.id.emptyDataArtistsTextView)
         loadingAlbumsProgressBar =  view.findViewById(R.id.loadingAlbumsProgressBar)
-        loadingArtistsProgressBar =  view.findViewById(R.id.loadingArtistsProgressBar)
+        loadingPerformersProgressBar =  view.findViewById(R.id.loadingArtistsProgressBar)
 
         return view
     }
@@ -81,15 +81,11 @@ class DetailCollectorFragment : Fragment() {
                 CollectorViewModel.Factory(requireActivity().application)
             )[CollectorViewModel::class.java]
 
-            try {
-                viewModelCollector.findById(it)
-            } catch (ex: NoInternetException){
-                showConnectivityErrorDialog()
-            }
+            viewModelCollector.findById(it)
 
             viewModelCollector.collector.observe(viewLifecycleOwner) { collector ->
                 collector?.let {
-                    tvNoArtistsRecords.visibility = View.GONE
+                    tvNoPerformersRecords.visibility = View.GONE
                     tvNoAlbumsRecords.visibility = View.GONE
                     twName.text = collector.name
                     twPhone.text = collector.telephone
@@ -99,41 +95,41 @@ class DetailCollectorFragment : Fragment() {
                         CollectorAlbumViewModel.Factory(requireActivity().application)
                     )[CollectorAlbumViewModel::class.java]
                     fillAlbums(collector, view)
-                    viewModelCollectorArtist = ViewModelProvider(
+                    viewModelCollectorPerformer = ViewModelProvider(
                         this,
-                        CollectorArtistViewModel.Factory(requireActivity().application)
-                    )[CollectorArtistViewModel::class.java]
-                    fillArtists(collector, view)
+                        CollectorPerformerViewModel.Factory(requireActivity().application)
+                    )[CollectorPerformerViewModel::class.java]
+                    fillPerformers(collector, view)
                 } ?: run {
                     tvNoAlbumsRecords.visibility = View.VISIBLE
-                    tvNoArtistsRecords.visibility = View.VISIBLE
+                    tvNoPerformersRecords.visibility = View.VISIBLE
                     val connectionStatus = EstadoServicios()
-                    if (!connectionStatus.validarConexionIntenet(requireContext())){
+                    /*if (!connectionStatus.validarConexionIntenet(requireContext())){
                         showConnectivityErrorDialog()
-                    }
+                    }*/
                 }
             }
         }
     }
 
-    private fun fillArtists(collector: Collector, view: View) {
-        viewModelCollectorArtist.findAll(collector.collectorId)
-        viewModelCollectorArtist.collectorArtist.observe(viewLifecycleOwner) { artists ->
+    private fun fillPerformers(collector: Collector, view: View) {
+        viewModelCollectorPerformer.findAll(collector.collectorId)
+        viewModelCollectorPerformer.collectorPerformer.observe(viewLifecycleOwner) { performers ->
 
             val recyclerView: RecyclerView = view.findViewById(R.id.rv_collector_artist)
             recyclerView.visibility = View.GONE
-            loadingArtistsProgressBar.visibility = View.VISIBLE
-            this.artists = artists
-            val collectorArtistAdapter = CollectorArtistAdapter(this.artists)
+            loadingPerformersProgressBar.visibility = View.VISIBLE
+            this.performers = performers
+            val collectorPerformerAdapter = CollectorPerformerAdapter(this.performers)
 
             recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            recyclerView.adapter = collectorArtistAdapter
+            recyclerView.adapter = collectorPerformerAdapter
 
-            loadingArtistsProgressBar.visibility = View.GONE
-            if (artists.isNotEmpty()) {
+            loadingPerformersProgressBar.visibility = View.GONE
+            if (performers.isNotEmpty()) {
                 recyclerView.visibility = View.VISIBLE
             }else {
-                tvNoArtistsRecords.visibility = View.VISIBLE
+                tvNoPerformersRecords.visibility = View.VISIBLE
             }
         }
     }
@@ -146,7 +142,7 @@ class DetailCollectorFragment : Fragment() {
             recyclerView.visibility = View.GONE
             loadingAlbumsProgressBar.visibility = View.VISIBLE
             this.albums = albums
-            val collectorAlbumAdapter = CollectorAlbumAdapter(this.albums)
+            val collectorAlbumAdapter = CollectorAlbumAdapter(this.albums, this)
 
             recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             recyclerView.adapter = collectorAlbumAdapter
@@ -186,5 +182,20 @@ class DetailCollectorFragment : Fragment() {
                 arguments = Bundle().apply {
                 }
             }
+    }
+
+    override fun onItemClick(position: Int) {
+        val albumId = albums[position].album.albumId
+
+        val bundle = Bundle()
+        bundle.putInt("idAlbum", albumId)
+
+        val detailAlbumFragment = DetailAlbumFragment()
+        detailAlbumFragment.arguments = bundle
+
+        val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.frame_layout, detailAlbumFragment)
+        transaction?.disallowAddToBackStack()
+        transaction?.commit()
     }
 }

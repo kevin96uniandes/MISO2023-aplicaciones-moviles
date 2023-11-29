@@ -25,7 +25,8 @@ data class Collector (
                 telephone = jsonObject.getString("telephone"),
                 email = jsonObject.getString("email"),
                 albums = CollectorAlbum.fromJSONArray(
-                    jsonObject.getJSONArray("albums")
+                    jsonObject.getJSONArray("collectorAlbums"),
+                    jsonObject.getInt("id")
                 )
             )
         }
