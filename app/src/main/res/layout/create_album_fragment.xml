@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:maxLength="100"
+                android:contentDescription="@string/write_your_name"
                 android:hint="@string/write_your_name"
                 app:type="@string/EDIT_TEXT_TYPE_TEXT"/>
             <TextView
@@ -58,7 +59,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="@string/dd_mm_aaaa"
-                android:focusable="false"
+                android:contentDescription="@string/release_date"
+                android:focusable="true"
                 android:clickable="true"
                 app:type="@string/EDIT_TEXT_TYPE_TEXT"
                 />
@@ -88,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/rounded_background"
+                android:contentDescription="@string/musical_genre"
                 android:textSize="16sp"
                 android:textColor="@color/vinyls_yellow"
                 android:paddingStart="5sp"
@@ -118,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/rounded_background"
+                android:contentDescription="@string/create_album_record_label"
                 android:textSize="16sp"
                 android:textColor="@color/vinyls_yellow"
                 android:paddingStart="5sp"
@@ -148,6 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:maxLength="100"
+                android:contentDescription="@string/cover_image"
                 android:hint="@string/cover_image"
                 app:type="@string/EDIT_TEXT_TYPE_URL"/>
             <TextView
@@ -176,6 +181,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
+                android:hint="@string/write_your_review"
+                android:contentDescription="@string/write_your_review"
                 android:lines="5"
                 app:type="@string/EDIT_TEXT_TYPE_TEXT"/>
 
@@ -207,6 +214,7 @@
             <com.uniandes.vinyls.ui.components.CustomButton
                 android:id="@+id/create_album_btn_save"
                 android:layout_width="match_parent"
+                android:contentDescription="@string/save_button_album"
                 android:layout_height="wrap_content" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

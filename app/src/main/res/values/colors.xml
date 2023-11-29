@@ -7,8 +7,8 @@
     <!--Vynils dark-->
     <color name="vinyls_yellow">#BFC202</color>
     <color name="vinyls_black">#000000</color>
+    <color name="vinyls_orange_lite">#CDDC39</color>
     <color name="vinyls_background_gray">#363636</color>
     <color name="vinyls_text_color">#535252</color>
     <color name="vinyls_error_color">#FF0000</color>
-    <color name="vinyls_time_track_background">#535252</color>
 </resources>

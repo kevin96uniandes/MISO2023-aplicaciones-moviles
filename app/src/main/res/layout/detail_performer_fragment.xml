@@ -32,6 +32,7 @@
                 android:id="@+id/image_detail_performer"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:contentDescription="@string/imagen_cover_artist"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.5" />
