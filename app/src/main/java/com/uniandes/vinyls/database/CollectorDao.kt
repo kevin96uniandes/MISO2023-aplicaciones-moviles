@@ -12,6 +12,9 @@ interface CollectorDAO {
     @Query("SELECT * FROM collectors ORDER BY name ASC")
     fun findAll(): List<Collector>
 
+    @Query("SELECT * FROM collectors WHERE collectorId = :collectorId")
+    fun findById(collectorId: Int): Collector?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(collector: Collector)
 
