@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.uniandes.vinyls.NoInternetException
 import com.uniandes.vinyls.R
 import com.uniandes.vinyls.adapter.CollectorAlbumAdapter
 import com.uniandes.vinyls.adapter.CollectorPerformerAdapter
@@ -30,7 +29,9 @@ import com.uniandes.vinyls.viewmodels.CollectorViewModel
  * Use the [DetailCollectorFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DetailCollectorFragment : Fragment(), CollectorAlbumAdapter.OnItemClickListener {
+class DetailCollectorFragment : Fragment(),
+    CollectorAlbumAdapter.OnItemClickListener,
+    CollectorPerformerAdapter.OnItemClickListener {
     // TODO: Rename and change types of parameters
     private lateinit var twName: TextView
     private lateinit var twEmail: CustomTextView
@@ -120,7 +121,7 @@ class DetailCollectorFragment : Fragment(), CollectorAlbumAdapter.OnItemClickLis
             recyclerView.visibility = View.GONE
             loadingPerformersProgressBar.visibility = View.VISIBLE
             this.performers = performers
-            val collectorPerformerAdapter = CollectorPerformerAdapter(this.performers)
+            val collectorPerformerAdapter = CollectorPerformerAdapter(this.performers, this)
 
             recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             recyclerView.adapter = collectorPerformerAdapter
@@ -195,6 +196,21 @@ class DetailCollectorFragment : Fragment(), CollectorAlbumAdapter.OnItemClickLis
 
         val transaction = this.activity?.supportFragmentManager?.beginTransaction()
         transaction?.replace(R.id.frame_layout, detailAlbumFragment)
+        transaction?.disallowAddToBackStack()
+        transaction?.commit()
+    }
+
+    override fun onItemCollectorPerformerClick(position: Int) {
+        val performerId = performers[position].id
+
+        val bundle = Bundle()
+        bundle.putInt("idPerformer", performerId)
+
+        val detailPerformerFragment = DetailPerformerFragment()
+        detailPerformerFragment.arguments = bundle
+
+        val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.frame_layout, detailPerformerFragment)
         transaction?.disallowAddToBackStack()
         transaction?.commit()
     }

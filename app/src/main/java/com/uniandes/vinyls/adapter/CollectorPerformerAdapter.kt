@@ -11,7 +11,8 @@ import com.uniandes.vinyls.models.CollectorPerformer
 import com.uniandes.vinyls.ui.components.CustomTextView
 
 class CollectorPerformerAdapter(
-    private val collectorPerformer: List<CollectorPerformer>
+    private val collectorPerformer: List<CollectorPerformer>,
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<CollectorPerformerAdapter.CollectorPerformerViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,7 +32,11 @@ class CollectorPerformerAdapter(
 
     override fun getItemCount(): Int = collectorPerformer.size
 
-    inner class CollectorPerformerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CollectorPerformerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bind(collectorPerformer: CollectorPerformer) {
             itemView.findViewById<CustomTextView>(R.id.collector_detail_name).text = collectorPerformer.name
@@ -40,5 +45,16 @@ class CollectorPerformerAdapter(
                 .error(R.drawable.ic_broken_image)
                 .into(itemView.findViewById<ImageView>(R.id.collector_detail_image))
         }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemCollectorPerformerClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemCollectorPerformerClick(position: Int)
     }
 }
