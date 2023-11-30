@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/search_bar_background"
                 android:hint="@string/filter_album"
+                android:contentDescription="@string/filter_album"
                 android:layout_marginBottom="20dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

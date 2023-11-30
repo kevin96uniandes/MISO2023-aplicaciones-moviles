@@ -46,6 +46,7 @@
                     android:id="@+id/go_to_performers"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:contentDescription="@string/imagen_go_to_artista"
                     android:layout_marginTop="20dp"
                     android:src="@mipmap/albumes"
                     android:layout_marginLeft="20dp"/>
@@ -70,6 +71,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
+                    android:contentDescription="@string/imagen_go_to_collectors"
                     android:src="@mipmap/albumes"
                     android:layout_marginLeft="20dp"/>
                 <TextView
@@ -92,6 +94,7 @@
                 android:id="@+id/go_to_album"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:contentDescription="@string/imagen_go_to_albums"
                 android:layout_marginTop="20dp"
                 android:src="@mipmap/albumes"
                 android:layout_marginLeft="20dp"/>
