@@ -2,9 +2,19 @@
     <string name="app_name">Vinyls</string>
     <string name="dd_mm_aaaa">DD-MM-AAAA</string>
     <string name="musical_genre">Género</string>
+    <string name="imagen_go_to_artista">imagen go to artista</string>
+    <string name="imagen_go_to_collectors">imagen go to collectors</string>
+    <string name="imagen_go_to_albums">imagen go to albums</string>
+    <string name="imagen_logo_vinyls">logo vinyls</string>
+    <string name="imagen_album_cover">album cover</string>
+    <string name="imagen_collector_album">imagen del coleccionista</string>
+    <string name="imagen_cover_artist">imagen del artista</string>
     <string name="release_date">Fecha de lanzamiento:</string>
     <string name="duracion">Duración:</string>
     <string name="write_your_name">Escribe tu nombre</string>
+    <string name="write_your_review">Escribe tu reseña</string>
+    <string name="save_button_track">Boton guardar track</string>
+    <string name="save_button_album">Boton guardar album</string>
     <string name="write_your_duration">Escribe la duracion</string>
     <string name="name">Nombre:</string>
     <string name="cover_image">Url del cover</string>
@@ -17,6 +27,7 @@
     <string name="detalle_performers">Detalle Artistas</string>
     <string name="app_bar_collectors">Coleccionistas</string>
     <string name="menu_artists">Artistas</string>
+    <string name="menu_detail_collector">Coleccionista</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="list_albums_label">Listado de álbumes</string>

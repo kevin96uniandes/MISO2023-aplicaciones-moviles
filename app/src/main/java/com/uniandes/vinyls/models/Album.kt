@@ -24,6 +24,13 @@ data class Album (
 
     companion object {
         fun fromJSONObject(jsonObject: JSONObject): Album {
+            val tracks: List<Track> = if (jsonObject.isNull("tracks")) {
+                listOf()
+            }else {
+                Track.fromJSONArray(
+                    jsonObject.getJSONArray("tracks")
+                )
+            }
             return Album(
                 albumId = jsonObject.getInt("id"),
                 name = jsonObject.getString("name"),
@@ -32,9 +39,7 @@ data class Album (
                 cover = jsonObject.getString("cover"),
                 recordLabel = jsonObject.getString("recordLabel"),
                 description = jsonObject.getString("description"),
-                tracks = Track.fromJSONArray(
-                    jsonObject.getJSONArray("tracks")
-                )
+                tracks = tracks
             )
         }
 

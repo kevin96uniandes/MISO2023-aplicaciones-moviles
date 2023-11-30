@@ -27,13 +27,12 @@ class CollectorAlbumViewModel (application: Application) : AndroidViewModel(appl
     fun findAll(collectorId: Int) {
         viewModelScope.launch(Dispatchers.Default) {
             withContext(Dispatchers.IO) {
-
                 try {
                     val hasConnectivity = connectionState.validarConexionIntenet(appl.applicationContext)
                     val collectorResponse = collectorAlbumRepository.findAll(collectorId, hasConnectivity)
                     initialCollectorAlbum = collectorResponse
 
-                    //collectorAlbumRepository.createCollectorDB(collectorResponse)
+                    collectorAlbumRepository.createCollectorAlbumDB(collectorResponse)
                     _collectorAlbum.postValue(collectorResponse)
                 } catch (ex: Exception){
                     Log.e("Error", "Ha ocurrido una excepción: ${ex.message} ${ex.localizedMessage} ${ex.printStackTrace()}")

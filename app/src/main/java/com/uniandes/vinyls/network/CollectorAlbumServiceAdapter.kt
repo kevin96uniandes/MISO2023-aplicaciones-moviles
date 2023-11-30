@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.uniandes.vinyls.models.CollectorAlbum
+import org.json.JSONArray
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -25,9 +26,11 @@ class CollectorAlbumServiceAdapter(context: Context): NetworkServiceAdapter(cont
     suspend fun findAll(collectorId: Int) = suspendCoroutine { cont ->
         requestQueue.add(
             getRequest("/collectors/$collectorId/albums", { response ->
-                val gson = Gson()
+                /*val gson = Gson()
                 val listType = object : TypeToken<List<CollectorAlbum>>() {}.type
-                val listCollectorAlbum: List<CollectorAlbum> = gson.fromJson(response, listType)
+                val listCollectorAlbum: List<CollectorAlbum> = gson.fromJson(response, listType)*/
+                val responseJson = JSONArray(response)
+                val listCollectorAlbum = CollectorAlbum.fromJSONArray(responseJson, collectorId)
                 cont.resume(listCollectorAlbum)
             },{
               cont.resumeWithException(it)

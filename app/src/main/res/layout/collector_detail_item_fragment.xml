@@ -7,6 +7,7 @@
     <ImageView
         android:id="@+id/collector_detail_image"
         android:layout_width="100dp"
+        android:contentDescription="@string/imagen_collector_album"
         android:layout_height="100dp"/>
 
     <com.uniandes.vinyls.ui.components.CustomTextView

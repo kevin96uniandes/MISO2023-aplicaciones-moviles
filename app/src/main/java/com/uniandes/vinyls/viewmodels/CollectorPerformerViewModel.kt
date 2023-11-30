@@ -8,33 +8,32 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.uniandes.vinyls.models.CollectorArtist
-import com.uniandes.vinyls.repositories.CollectorArtistRepository
+import com.uniandes.vinyls.models.CollectorPerformer
+import com.uniandes.vinyls.repositories.CollectorPerformerRepository
 import com.uniandes.vinyls.utils.EstadoServicios
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CollectorArtistViewModel (application: Application) : AndroidViewModel(application) {
+class CollectorPerformerViewModel (application: Application) : AndroidViewModel(application) {
 
     private var connectionState: EstadoServicios = EstadoServicios()
-    private val collectorArtistRepository = CollectorArtistRepository (application)
-    private var initialCollectorArtist: List<CollectorArtist> = listOf()
-    private val _collectorArtist = MutableLiveData<List<CollectorArtist>>()
-    val collectorArtist: LiveData<List<CollectorArtist>> = _collectorArtist
+    private val collectorPerformerRepository = CollectorPerformerRepository (application)
+    private var initialCollectorPerformer: List<CollectorPerformer> = listOf()
+    private val _collectorPerformer = MutableLiveData<List<CollectorPerformer>>()
+    val collectorPerformer: LiveData<List<CollectorPerformer>> = _collectorPerformer
     val appl = application
 
     fun findAll(collectorId: Int) {
         viewModelScope.launch(Dispatchers.Default) {
             withContext(Dispatchers.IO) {
-
                 try {
                     val hasConnectivity = connectionState.validarConexionIntenet(appl.applicationContext)
-                    val collectorResponse = collectorArtistRepository.findAll(collectorId, hasConnectivity)
-                    initialCollectorArtist = collectorResponse
+                    val collectorResponse = collectorPerformerRepository.findAll(collectorId, hasConnectivity)
+                    initialCollectorPerformer = collectorResponse
 
-                    //collectorArtistRepository.createCollectorDB(collectorResponse)
-                    _collectorArtist.postValue(collectorResponse)
+                    collectorPerformerRepository.createCollectorPerformerDB(collectorResponse)
+                    _collectorPerformer.postValue(collectorResponse)
                 } catch (ex: Exception){
                     Log.e("Error", "Ha ocurrido una excepción: ${ex.message} ${ex.localizedMessage} ${ex.printStackTrace()}")
                 }
@@ -44,9 +43,9 @@ class CollectorArtistViewModel (application: Application) : AndroidViewModel(app
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CollectorArtistViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(CollectorPerformerViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CollectorArtistViewModel(app) as T
+                return CollectorPerformerViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

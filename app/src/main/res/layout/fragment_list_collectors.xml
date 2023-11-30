@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/no_records_display"
                 android:textSize="18sp"
-                android:textColor="@color/vinyls_text_color"
+                android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:visibility="gone" />
 
