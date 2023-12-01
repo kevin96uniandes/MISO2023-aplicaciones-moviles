@@ -157,16 +157,6 @@ class DetailCollectorFragment : Fragment(),
         }
     }
 
-    private fun showConnectivityErrorDialog(){
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setView(R.layout.connectivity_error_dialog)
-        builder.setPositiveButton("Aceptar") { dialog, which ->
-            Toast.makeText(requireContext(), "¡Conéctate a Internet!", Toast.LENGTH_SHORT).show()
-        }
-        val dialog = builder.create()
-        dialog.show()
-    }
-
     companion object {
         /**
          * Use this factory method to create a new instance of
