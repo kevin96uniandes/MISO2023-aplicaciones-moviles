@@ -9,7 +9,6 @@
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@mipmap/connectivity_error"
         android:layout_gravity="center_horizontal"/>
 
     <TextView

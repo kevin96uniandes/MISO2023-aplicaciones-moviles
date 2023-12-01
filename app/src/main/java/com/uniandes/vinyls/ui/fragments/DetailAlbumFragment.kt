@@ -61,6 +61,8 @@ class DetailAlbumFragment : Fragment() {
     }
      fun insertarDatosFragment(view: View) {
 
+         activity?.title = album.name.toString()
+
          Log.d("album", "album: ${album}")
          Log.d("tracks", "tracks: ${album.tracks}")
 
@@ -85,16 +87,18 @@ class DetailAlbumFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.title = activity?.getText(R.string.detalle_albums).toString()
-
         val addTrack = view.findViewById<Button>(R.id.add_track)
 
         addTrack.setOnClickListener {
+
             val bundle = Bundle()
             bundle.putInt("idAlbum", album.albumId)
 
+            val asociateTrackFragment = AsociateTrackFragment()
+            asociateTrackFragment.arguments = bundle
+
             val transaction = this.activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frame_layout, AsociateTrackFragment())
+            transaction?.replace(R.id.frame_layout, asociateTrackFragment)
             transaction?.disallowAddToBackStack()
             transaction?.commit()
         }
