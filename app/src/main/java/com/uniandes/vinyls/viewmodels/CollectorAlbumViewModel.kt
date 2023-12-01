@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.uniandes.vinyls.models.CollectorAlbum
+import com.uniandes.vinyls.repositories.AlbumRepository
 import com.uniandes.vinyls.repositories.CollectorAlbumRepository
 import com.uniandes.vinyls.utils.EstadoServicios
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ import kotlinx.coroutines.withContext
 class CollectorAlbumViewModel (application: Application) : AndroidViewModel(application) {
 
     private var connectionState: EstadoServicios = EstadoServicios()
+    private val albumRepository = AlbumRepository(application)
     private val collectorAlbumRepository = CollectorAlbumRepository (application)
     private var initialCollectorAlbum: List<CollectorAlbum> = listOf()
     private val _collectorAlbum = MutableLiveData<List<CollectorAlbum>>()
@@ -33,6 +35,7 @@ class CollectorAlbumViewModel (application: Application) : AndroidViewModel(appl
                     initialCollectorAlbum = collectorResponse
 
                     collectorAlbumRepository.createCollectorAlbumDB(collectorResponse)
+                    albumRepository.guardarAlbumsBD(collectorResponse.map { it.album } )
                     _collectorAlbum.postValue(collectorResponse)
                 } catch (ex: Exception){
                     Log.e("Error", "Ha ocurrido una excepción: ${ex.message} ${ex.localizedMessage} ${ex.printStackTrace()}")

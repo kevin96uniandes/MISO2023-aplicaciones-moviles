@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:paddingLeft="10dp"
-                android:text="@string/add_album"
+                android:text="@string/add_track"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>

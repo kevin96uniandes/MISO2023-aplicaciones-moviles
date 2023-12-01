@@ -25,7 +25,7 @@ class TrackServiceAdapter(context: Context): NetworkServiceAdapter(context) {
 
     suspend fun asociateTrack(track: Map<String, Any>, id: Int) = suspendCoroutine<Track>{ continuation ->
         requestQueue.add(
-            postRequest("/albums/${id}/track", JSONObject(track), { response ->
+            postRequest("/albums/${id}/tracks", JSONObject(track), { response ->
                 val track = Track(
                     id = response.getInt("id"),
                     name = response.getString("name"),
