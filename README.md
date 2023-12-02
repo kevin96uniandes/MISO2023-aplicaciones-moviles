@@ -1,6 +1,6 @@
 # Bienvenido al repositorio MISO2023-aplicaciones-moviles
 
-## Prerequisitos para poder ejecutar nuestra aplicacion en su PC local
+## Prerequisitos para poder ejecutar nuestra aplicacion en su PC local5
 
 Tener instalado Android Studio en su PC
 
