@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,6 +61,8 @@ class DetailAlbumFragment : Fragment() {
     }
      fun insertarDatosFragment(view: View) {
 
+         activity?.title = album.name.toString()
+
          Log.d("album", "album: ${album}")
          Log.d("tracks", "tracks: ${album.tracks}")
 
@@ -83,7 +87,21 @@ class DetailAlbumFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.title = activity?.getText(R.string.detalle_albums).toString()
+        val addTrack = view.findViewById<Button>(R.id.add_track)
+
+        addTrack.setOnClickListener {
+
+            val bundle = Bundle()
+            bundle.putInt("idAlbum", album.albumId)
+
+            val asociateTrackFragment = AsociateTrackFragment()
+            asociateTrackFragment.arguments = bundle
+
+            val transaction = this.activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, asociateTrackFragment)
+            transaction?.disallowAddToBackStack()
+            transaction?.commit()
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 

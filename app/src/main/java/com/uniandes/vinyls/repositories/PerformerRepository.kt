@@ -30,6 +30,27 @@ class PerformerRepository(private val application: Application) {
         Log.d("Performers", performers.toString())
         return performers
     }
+
+    suspend fun obtenerPerformerPorId(id: Int): Performer {
+
+        var performer: Performer?
+        val isRunningTest = validarTest()
+        if (!isRunningTest){
+            val db = VinylDB.getDatabase(application.applicationContext)
+            performer = db.performerDao().getPerformerById(id)
+            if(performer != null){
+                return performer
+            }else{
+                performer = PerformerServiceAdapter.getInstance(application).getPerformerById(id)
+                return performer
+
+            }
+        }else {
+            performer = MockPerformerServiceAdapter.getInstance(application).getPerformerById(1)
+            return performer
+        }
+    }
+
     fun validarTest(): Boolean {
 
         val isRunningTest : Boolean by lazy {

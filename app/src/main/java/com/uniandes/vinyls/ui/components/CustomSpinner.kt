@@ -20,11 +20,8 @@ class CustomSpinnerAdapter(
         val view = super.getView(position, convertView, parent!!)
         val textView = view.findViewById<TextView>(android.R.id.text1)
         // Cambiar el color del texto del elemento seleccionado
-        if (position != 0) {
-            textView.setTextColor(ContextCompat.getColor(context, R.color.vinyls_yellow))
-        } else {
-            textView.setTextColor(ContextCompat.getColor(context, R.color.vinyls_black))
-        }
+        textView.setTextColor(ContextCompat.getColor(context, R.color.vinyls_yellow))
+
         return view
     }
 

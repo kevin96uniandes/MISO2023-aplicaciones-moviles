@@ -39,7 +39,6 @@ fun <T : View>isFormSuccess(pairs: List<Pair<T,TextView>>, activity: Activity ):
                             errorTextView.text = message
                         }
                     }
-
                 }
             }
             is EditText -> {
@@ -47,6 +46,14 @@ fun <T : View>isFormSuccess(pairs: List<Pair<T,TextView>>, activity: Activity ):
                 if (editText.text.isEmpty()) {
                     message = activity.getText(R.string.error_required_field_and_not_empty).toString()
                     errorTextView.text =  message
+                }else{
+                    if(editText.id == R.id.asociate_track_duracion){
+                        Log.d("asociate_track_duracion", "isFormSuccess: ${editText.text}")
+                        if(editText.text.length < 3){
+                            message = activity.getText(R.string.error_longitd_duracion).toString()
+                            errorTextView.text = message
+                        }
+                    }
                 }
             }
             is Spinner -> {

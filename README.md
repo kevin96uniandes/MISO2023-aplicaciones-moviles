@@ -60,7 +60,7 @@ En el repositorio, en la seccion wiki se encuentra el archivo Vynils-Iteracion-1
 
 NOTA: A la hora de instalar el apk en tu celular, ese te mostrara multiples alertas por ser un APK externo, por favor aceptar todas
 
-[link del apk](https://uniandes-my.sharepoint.com/:u:/g/personal/k_maldonadod_uniandes_edu_co/ER-rmHwIcxpHh8p889NizCsB0NbVYsY2UNoQ5z3vuG62sA?e=qdNCQv)
+[link del apk](https://uniandes-my.sharepoint.com/:u:/g/personal/k_maldonadod_uniandes_edu_co/ER-rmHwIcxpHh8p889NizCsBSH5HLqmSUOnCO3xpmZRJxQ?e=gGGwEt)
 
 ## Instrucciones entrega
 

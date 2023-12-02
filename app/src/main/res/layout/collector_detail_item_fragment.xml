@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/collector_detail_image"
+        android:layout_width="100dp"
+        android:contentDescription="@string/imagen_collector_album"
+        android:layout_height="100dp"/>
+
+    <com.uniandes.vinyls.ui.components.CustomTextView
+        android:id="@+id/collector_detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

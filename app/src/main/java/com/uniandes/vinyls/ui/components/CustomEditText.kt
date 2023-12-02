@@ -47,7 +47,7 @@ class CustomEditText : AppCompatEditText {
         setPadding(16, 0, 16, 0)
         textSize = 16f // Tamaño del texto
         setTextColor(ContextCompat.getColor(context, R.color.vinyls_yellow))
-        setHintTextColor(ContextCompat.getColor(context, R.color.black))
+        setHintTextColor(ContextCompat.getColor(context, R.color.vinyls_orange_lite))
 
         if (type == EditTextType.URL.name) {
             inputType = InputType.TYPE_TEXT_VARIATION_URI
