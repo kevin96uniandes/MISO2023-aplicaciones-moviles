@@ -66,4 +66,5 @@ NOTA: A la hora de instalar el apk en tu celular, ese te mostrara multiples aler
 
 En la wiki del repositorio, en la sección Sprint 2 encontraras los documentos de la entrega y el APK
 
-![image](https://uniandes-my.sharepoint.com/:u:/g/personal/k_maldonadod_uniandes_edu_co/ER-rmHwIcxpHh8p889NizCsB0NbVYsY2UNoQ5z3vuG62sA?e=q7Hago)
+![image](https://github.com/kevin96uniandes/MISO2023-aplicaciones-moviles/assets/123959005/72b17c19-5aa1-4d09-9b26-9fe1b4e9f9e8)
+
